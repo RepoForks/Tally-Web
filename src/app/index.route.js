@@ -22,6 +22,7 @@
         controllerAs: 'roomList'
       })
 
+      // empty view
       .state('room', {
         url: '/room',
         templateUrl: 'app/room/room.html'
