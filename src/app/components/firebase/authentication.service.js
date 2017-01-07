@@ -6,11 +6,11 @@
     .service('authenticationService', authenticationService);
 
   /** @ngInject */
-  function authenticationService($firebaseAuth) {
+  function authenticationService($rootScope, $firebaseAuth) {
 
     var auth = $firebaseAuth();
 
-    var currentUser = null;
+    var currentUser = $rootScope.authData;
 
     this.getAuth = getAuth;
     this.getCurrentUser = getCurrentUser;

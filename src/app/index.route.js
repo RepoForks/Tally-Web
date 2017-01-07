@@ -12,27 +12,31 @@
         url: '/',
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
-        controllerAs: 'main'
+        controllerAs: 'main',
+        authenticate: false
       })
 
       .state('rooms', {
         url: '/rooms',
         templateUrl: 'app/room/list/roomList.html',
         controller: 'RoomListController',
-        controllerAs: 'roomList'
+        controllerAs: 'roomList',
+        authenticate: true
       })
 
       // empty view
       .state('room', {
         url: '/room',
-        templateUrl: 'app/room/room.html'
+        templateUrl: 'app/room/room.html',
+        authenticate: true
       })
 
       .state('room.detail', {
         url: '/room/:roomID',
         templateUrl: 'app/room/details/roomDetail.html',
         controller: 'RoomDetailController',
-        controllerAs: 'roomDetail'
+        controllerAs: 'roomDetail',
+        authenticate: true
       });
 
     $urlRouterProvider.otherwise('/');
