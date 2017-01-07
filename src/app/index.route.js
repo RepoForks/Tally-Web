@@ -31,8 +31,16 @@
         authenticate: true
       })
 
+      .state('room.create', {
+        url: '/create',
+        templateUrl: 'app/room/create/roomCreate.html',
+        controller: 'RoomCreateController',
+        controllerAs: 'roomCreate',
+        authenticate: true
+      })
+
       .state('room.detail', {
-        url: '/room/:roomID',
+        url: '/room/:roomID/details',
         templateUrl: 'app/room/details/roomDetail.html',
         controller: 'RoomDetailController',
         controllerAs: 'roomDetail',
