@@ -1,3 +1,39 @@
 .acme-navbar-text {
   color: white;
 }
+
+.navbar-links {
+  margin-right: 0;
+}
+
+.navbar-links li {
+  display: inline-block;
+}
+
+.navbar-links a {
+  padding: 15px;
+  min-height: 50px;
+}
+
+.navbar-links a:last-child {
+  margin-right: 15px;
+}
+
+.dropdown-menu li {
+  display: block;
+}
+
+.dropdown-menu li:last-child {
+  margin-right: 0;
+}
+
+.dropdown-menu li a {
+  padding: 3px 20px;
+  min-height: 0;
+
+}
+
+.dropdown-menu li a div {
+  white-space: normal;
+
+}

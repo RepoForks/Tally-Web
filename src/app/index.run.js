@@ -6,7 +6,14 @@
     .run(runBlock);
 
   /** @ngInject */
-  function runBlock($log) {
+  function runBlock($log, authenticationService) {
+
+    $log.debug(authenticationService.getAuth());
+
+    authenticationService.getAuth().$onAuthStateChanged(function(authData) {
+      $log.debug(authData);
+      authenticationService.setCurrentUser(authData);
+    });
 
     $log.debug('runBlock end');
   }

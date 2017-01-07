@@ -21,11 +21,28 @@
     return directive;
 
     /** @ngInject */
-    function NavbarController(moment) {
+    function NavbarController(moment, authenticationService) {
       var vm = this;
 
       // "vm.creationDate" is available by directive option "bindToController: true"
-      vm.relativeDate = moment(vm.creationDate).fromNow();
+      vm.relativeDate = moment(vm.creationDate).fromNow
+
+      vm.showSignedInLinks = function() {
+        return authenticationService.isLoggedIn();
+      }
+
+      vm.onSignInClicked = function() {
+        console.log("SIgned In Clicked");
+        authenticationService.getAuth().$signInWithEmailAndPassword('rex@email.com', 'Pass123');
+      }
+
+      vm.onSignUpClicked = function() {
+        // TODO Show dialog
+      }
+
+      vm.onLogoutClicked = function() {
+        return authenticationService.logout();
+      }
     }
   }
 
