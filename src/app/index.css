@@ -16,3 +16,8 @@
 .content-wrapper {
   margin-top: 75px;
 }
+
+
+.polls-wrapper .poll {
+  border: 1px solid black;
+}

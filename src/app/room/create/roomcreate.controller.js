@@ -15,13 +15,10 @@
     vm.roomCode = '';
     vm.userList = null;
 
-    vm.test = "FUCK ME";
-
     vm.createdRoom = null;
     vm.roomKey = null;
 
     vm.onCreateButtonClicked = function() {
-      console.log("Clicked Create");
       createRoom();
     }
 
@@ -30,11 +27,8 @@
       if(validate()) {
         var strippedList = '';
         if(vm.userList) {
-          console.log("Stripp");
           strippedList = vm.userList.split(/[\s,;]+/);
         }
-
-        console.log("LIST = " + strippedList);
 
         vm.createdRoom = {
           name: vm.roomName,
@@ -54,7 +48,6 @@
 
     function enrollUsersInRoom() {
       validateUserList(vm.createdRoom.userList).then(function(validUsers) {
-        console.log(validUsers);
         enrollUsers(validUsers);
       });
     }
@@ -64,11 +57,8 @@
       return firebaseService.getUserRef().once('value').then(function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
           var email = childSnapshot.child('/email').val();
-          console.log(email);
-          console.log(vm.createdRoom.userList);
           if(vm.createdRoom.userList.indexOf(email) > -1) {
             validUsers.push(childSnapshot.key);
-            console.log(childSnapshot.key);
           }
         });
         console.log("Return valid users");
