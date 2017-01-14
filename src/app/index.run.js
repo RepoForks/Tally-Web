@@ -6,15 +6,15 @@
   .run(runBlock);
 
   /** @ngInject */
-  function runBlock($log, $rootScope, $state, authenticationService) {
-
-    $rootScope.authData = null;
+  function runBlock($window, $log, $rootScope, $state, authenticationService) {
 
     authenticationService.getAuth().$onAuthStateChanged(function(authData) {
+      var data = JSON.stringify(authData);
+      
+      $window.sessionStorage.setItem('currentUser', data);
       $rootScope.authData = authData;
       authenticationService.setCurrentUser(authData);
 
-      console.log("User: " + authData);
     });
 
     // $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){

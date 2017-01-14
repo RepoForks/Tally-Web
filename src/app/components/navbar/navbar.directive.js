@@ -28,12 +28,13 @@
       vm.relativeDate = moment(vm.creationDate).fromNow
 
       vm.showSignedInLinks = function() {
-        return authenticationService.isLoggedIn();
+        return authenticationService.isLoggedIn() == true;
+        //return authenticationService.isLoggedIn();
       }
 
       vm.onSignInClicked = function() {
         console.log("SIgned In Clicked");
-        authenticationService.getAuth().$signInWithEmailAndPassword('rex@email.com', 'Pass123');
+        authenticationService.getAuth().$signInWithEmailAndPassword('rex@email.com', 'scania93');
       }
 
       vm.onSignUpClicked = function() {

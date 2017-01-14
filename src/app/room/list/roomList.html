@@ -4,6 +4,7 @@
   <div class="jumbotron text-center">
       <h1>The Room List Page</h1>
       <p>This page demonstrates <span class="text-danger">multiple</span> and <span class="text-danger">named</span> views.</p>
+      <a ui-sref="room.create()"><button>Create Room</button></a>
   </div>
 
   <a ui-sref="room.detail({ roomID: room.$id })" ng-repeat="room in roomList.rooms">{{room.$id}}</a>

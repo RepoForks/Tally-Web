@@ -9,14 +9,13 @@
   function RoomDetailController($scope, $stateParams, firebaseService, $firebaseArray) {
     var vm = this;
 
-    vm.presentations = [];
+    vm.roomID = $stateParams.roomID;
 
-    // we can retrieve the roomID from url state
-    console.log($stateParams.roomID);
+    vm.presentations = [];
 
     // TODO User auth required alonside their uid
     function getPresentations() {
-      vm.presentations = $firebaseArray(firebaseService.getPresentationRoomRef().child('-K_F8UImQyD9P5wU6RZB'));
+      vm.presentations = $firebaseArray(firebaseService.getPresentationRoomRef().child('/' + $stateParams.roomID));
       console.log(vm.presentations);
     }
 

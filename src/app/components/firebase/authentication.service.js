@@ -6,7 +6,7 @@
     .service('authenticationService', authenticationService);
 
   /** @ngInject */
-  function authenticationService($rootScope, $firebaseAuth) {
+  function authenticationService($window, $rootScope, $firebaseAuth) {
 
     var auth = $firebaseAuth();
 
@@ -18,16 +18,22 @@
     this.isLoggedIn = isLoggedIn;
     this.logout = logout;
 
+    this.onAuthStateChanged = onAuthStateChanged;
+
     function getAuth() {
       return auth;
     }
 
     function getCurrentUser() {
-      return currentUser;
+      if($window.sessionStorage.currentUser != null) {
+        return JSON.parse($window.sessionStorage.currentUser);
+      }
+
+      return null;
     }
 
     function setCurrentUser(authData) {
-        currentUser = authData;
+      currentUser = authData;
     }
 
     function isLoggedIn() {
@@ -36,6 +42,12 @@
 
     function logout() {
       auth.$signOut();
+    }
+
+    function onAuthStateChanged() {
+      return auth.$onAuthStateChanged(function(authData) {
+        return authData;
+      });
     }
   }
 

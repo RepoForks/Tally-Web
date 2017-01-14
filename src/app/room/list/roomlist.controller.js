@@ -6,14 +6,15 @@
     .controller('RoomListController', RoomListController);
 
   /** @ngInject */
-  function RoomListController(firebaseService, $firebaseArray) {
+  function RoomListController($window, $rootScope, firebaseService, $firebaseArray, authenticationService) {
     var vm = this;
 
     vm.rooms = [];
 
     // TODO User auth required alonside their uid
     function getRooms() {
-      vm.rooms = $firebaseArray(firebaseService.getUserRoomRef().child('3B1ePSqxO3TwgGb3wtfzBJg7CSs2'));
+      console.log(authenticationService.getCurrentUser());
+      vm.rooms = $firebaseArray(firebaseService.getUserRoomRef().child('/' + authenticationService.getCurrentUser().uid));
       console.log(vm.rooms);
     }
 

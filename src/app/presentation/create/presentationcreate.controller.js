@@ -30,6 +30,7 @@
     vm.name = '';
     // could be empty
     vm.room = $stateParams.roomID;
+    console.log(vm.room);
 
     vm.onAddNewPollButtonClicked = function() {
     }
@@ -45,6 +46,7 @@
       // create the presentation in fb
       var presKey = firebaseService.getPresentationRef().push().key
       firebaseService.getPresentationRef().child('/' + presKey).set(presentation);
+      firebaseService.getPresentationRoomRef().child('/' + vm.room).child('/' + presKey).set(presentation);
 
       var pollKey = firebaseService.getPollRef().child('/' + presKey).push(vm.poll).key;
 
