@@ -12,81 +12,44 @@
     vm.questionTypes = ['Multiple Choice', 'Open Form', 'Word Cloud'];
     vm.chartTypes = ['Bar Chart', 'Pie Chart']
 
-    // overarching pres
-    vm.presentation = {};
-    // array of poll objects
-    vm.polls = [{
+    var emptyPoll = {
       question: '',
       questionType: '',
       chartType: '',
-      answers: [],
+      answers: ['', ''],
       locked: false,
       timelimit: 0
-    }];
+    }
 
-    // template vars
+    vm.poll = emptyPoll;
+
+    // default empty poll
+    vm.polls = [];
+
+    // presentation name
     vm.name = '';
     // could be empty
     vm.room = $stateParams.roomID;
 
-
     vm.onAddNewPollButtonClicked = function() {
-
     }
 
     vm.onCreateButtonClicked = function() {
+
       // create the actual presentation
-      vm.presentation = {
+      var presentation = {
         name: vm.name,
         room: vm.room
       };
 
-      // create the presentation reference
+      // create the presentation in fb
       var presKey = firebaseService.getPresentationRef().push().key
-      firebaseService.getPresentationRef().child('/' + presKey).set(vm.presentation);
+      firebaseService.getPresentationRef().child('/' + presKey).set(presentation);
 
-      createPoll(presKey);
+      var pollKey = firebaseService.getPollRef().child('/' + presKey).push(vm.poll).key;
+
+      firebaseService.getPollResponsesRef().child('/' + pollKey).set(new Array(vm.poll.answers.length).fill(0));
+      //firebaseService.getPollResponsesRef('/' + pollKey).push();
     }
-
-    function createPoll(presKey) {
-
-      if(!validatePoll()) {
-        return false;
-      }
-
-      vm.polls.push({
-        question: vm.question,
-        questionType: vm.questionType,
-        chartType: vm.chartType,
-        answers: vm.answers,
-        locked: false,
-        timelimit: 0
-      })
-
-      // create the polls reference
-      for(var i=0; i<vm.polls.length; i++) {
-        var pollKey = firebaseService.getPollRef().child('/' + presKey).push(vm.polls[i]).key;
-        //firebaseService.getPollResponsesRef().child('/' + pollKey).push(vm.polls[i])
-          // create the poll response reference
-          //console.log(poll.val());
-          //firebaseService.getPollResponsesRef().child('/' + poll)
-      }
-
-
-
-
-    }
-
-    function validatePoll() {
-      return true;
-      for(var i=0; i<vm.polls.length; i++) {
-
-      }
-    }
-
-    function addNewAnswer() {
-      vm.answerCount++;
-    }
-
   }
 })();

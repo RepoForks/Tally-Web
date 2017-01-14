@@ -13,6 +13,8 @@
     authenticationService.getAuth().$onAuthStateChanged(function(authData) {
       $rootScope.authData = authData;
       authenticationService.setCurrentUser(authData);
+
+      console.log("User: " + authData);
     });
 
     // $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
