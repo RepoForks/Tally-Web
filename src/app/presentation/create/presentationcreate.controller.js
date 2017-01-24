@@ -21,7 +21,14 @@
       timelimit: 0
     }
 
-    vm.poll = emptyPoll;
+    vm.poll = {
+      question: '',
+      questionType: '',
+      chartType: '',
+      answers: ['', ''],
+      locked: false,
+      timelimit: 0
+    };
 
     // default empty poll
     vm.polls = [];
@@ -33,6 +40,8 @@
     console.log(vm.room);
 
     vm.onAddNewPollButtonClicked = function() {
+      vm.polls.push(angular.copy(vm.poll));
+      console.log(vm.polls);
     }
 
     vm.onCreateButtonClicked = function() {
@@ -48,10 +57,13 @@
       firebaseService.getPresentationRef().child('/' + presKey).set(presentation);
       firebaseService.getPresentationRoomRef().child('/' + vm.room).child('/' + presKey).set(presentation);
 
-      var pollKey = firebaseService.getPollRef().child('/' + presKey).push(vm.poll).key;
-
-      firebaseService.getPollResponsesRef().child('/' + pollKey).set(new Array(vm.poll.answers.length).fill(0));
-      //firebaseService.getPollResponsesRef('/' + pollKey).push();
+      for(var i=0; i<vm.polls.length; i++) {
+        console.log(vm.polls[i]);
+        delete vm.polls[i].$$hashKey;
+        var pollKey = firebaseService.getPollRef().child('/' + presKey).push(vm.polls[i]).key;
+        firebaseService.getPollResponsesRef().child('/' + pollKey).set(new Array(vm.polls[i].answers.length).fill(0));
+        //firebaseService.getPollResponsesRef('/' + pollKey).push();
+      }
     }
   }
 })();

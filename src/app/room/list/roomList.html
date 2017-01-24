@@ -7,6 +7,6 @@
       <a ui-sref="room.create()"><button>Create Room</button></a>
   </div>
 
-  <a ui-sref="room.detail({ roomID: room.$id })" ng-repeat="room in roomList.rooms">{{room.$id}}</a>
+  <a ui-sref="room.detail({ roomID: room.$id })" ng-repeat="room in roomList.rooms">{{room.name}}</a>
 
 </div>
