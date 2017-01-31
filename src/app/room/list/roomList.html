@@ -7,6 +7,14 @@
       <a ui-sref="room.create()"><button>Create Room</button></a>
   </div>
 
-  <a ui-sref="room.detail({ roomID: room.$id })" ng-repeat="room in roomList.rooms">{{room.name}}</a>
+  <div class="created-rooms">
+    <h3>User Created Rooms</h3>
+    <a ui-sref="room.detail({ roomID: room.$id })" ng-repeat="room in roomList.createdRooms">{{room.name}}</a>
+  </div>
+
+  <div class="enrolled-rooms">
+    <h3>User Enrolled Rooms</h3>
+    <a ui-sref="room.detail({ roomID: room.$id })" ng-repeat="room in roomList.enrolledRooms">{{room.name}}</a>
+  </div>
 
 </div>

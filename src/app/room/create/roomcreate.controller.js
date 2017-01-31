@@ -6,7 +6,7 @@
     .controller('RoomCreateController', RoomCreateController);
 
   /** @ngInject */
-  function RoomCreateController(firebaseService, $firebaseArray) {
+  function RoomCreateController(firebaseService, $firebaseArray, authenticationService) {
     var vm = this;
 
     console.log("CONTROLLER CALLED");
@@ -24,6 +24,8 @@
 
     function createRoom() {
 
+      var userID = authenticationService.getCurrentUser().uid;
+
       if(validate()) {
         var strippedList = '';
         if(vm.userList) {
@@ -33,6 +35,7 @@
         vm.createdRoom = {
           name: vm.roomName,
           code: vm.roomCode,
+          creator: userID,
           userList: strippedList
         };
 
@@ -40,6 +43,7 @@
 
         // pushes new entry to 'rooms' and returns the generated key
         vm.roomKey = firebaseService.getRoomRef().push(vm.createdRoom).key;
+        firebaseService.getUserCreatedRoomRef().child('/' + userID).child('/' + vm.roomKey).set(vm.createdRoom);
 
         enrollUsersInRoom();
       }

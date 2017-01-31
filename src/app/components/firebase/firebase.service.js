@@ -11,6 +11,7 @@
     var usersRefStr = 'user';
     var userRoomRefStr = 'user-rooms'
     var roomRefStr = 'rooms';
+    var userCreatedRoomRef = 'user-created-rooms'
     var presentationRefStr = 'presentations';
     var presentationRoomRefStr = 'presentation-rooms';
     var pollsRefStr = 'polls';
@@ -22,6 +23,7 @@
     this.getUserRef = getUserRef;
     this.getUserRoomRef = getUserRoomRef;
     this.getRoomRef = getRoomRef;
+    this.getUserCreatedRoomRef = getUserCreatedRoomRef;
     this.getPresentationRef = getPresentationRef;
     this.getPresentationRoomRef = getPresentationRoomRef;
     this.getPollRef = getPollRef;
@@ -38,6 +40,10 @@
 
     function getRoomRef() {
       return rootRef.ref(roomRefStr);
+    }
+
+    function getUserCreatedRoomRef() {
+      return rootRef.ref(userCreatedRoomRef);
     }
 
     function getPresentationRef() {
