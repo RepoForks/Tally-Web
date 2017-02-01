@@ -20,7 +20,7 @@
         url: '/rooms',
         templateUrl: 'app/room/list/roomList.html',
         controller: 'RoomListController',
-        controllerAs: 'roomList',
+        controllerAs: 'vm',
         authenticate: true
       })
 
@@ -35,7 +35,7 @@
         url: '/create',
         templateUrl: 'app/room/create/roomCreate.html',
         controller: 'RoomCreateController',
-        controllerAs: 'roomCreate',
+        controllerAs: 'vm',
         authenticate: true
       })
 
@@ -43,7 +43,7 @@
         url: '/:roomID/details',
         templateUrl: 'app/room/details/roomDetail.html',
         controller: 'RoomDetailController',
-        controllerAs: 'roomDetail',
+        controllerAs: 'vm',
         authenticate: true
       })
 
@@ -51,7 +51,7 @@
         url: '/presentation/:presID',
         templateUrl: 'app/presentation/details/presentationDetail.html',
         controller: 'PresentationDetailController',
-        controllerAs: 'presDetail',
+        controllerAs: 'vm',
         authenticate: true
       })
 
@@ -59,7 +59,7 @@
         url: '/:roomID/presentation/p/create',
         templateUrl: 'app/presentation/create/presentationCreate.html',
         controller: 'PresentationCreateController',
-        controllerAs: 'presCreate',
+        controllerAs: 'vm',
         authenticate: true
       })
 
@@ -73,7 +73,7 @@
         url: '/create',
         templateUrl: 'app/presentation/create/presentationCreate.html',
         controller: 'PresentationCreateController',
-        controllerAs: 'presCreate',
+        controllerAs: 'vm',
         authenticate: true
       })
 
@@ -81,7 +81,7 @@
         url: '/:presID/details',
         templateUrl: 'app/presentation/details/presentationDetail.html',
         controller: 'PresentationDetailController',
-        controllerAs: 'presDetail',
+        controllerAs: 'vm',
         authenticate: true
       });
 

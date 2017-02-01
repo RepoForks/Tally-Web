@@ -3,10 +3,48 @@
   <div class="jumbotron text-center">
       <h1>The Room Detail Page</h1>
       <p>This page demonstrates <span class="text-danger">multiple</span> and <span class="text-danger">named</span> views.</p>
-        <a ui-sref="room.presentationcreate({ roomID: roomDetail.roomID})"><button>Create Presentation</button></a>
+        <a ui-sref="room.presentationcreate({ roomID: vm.roomID})"><button>Create Presentation</button></a>
   </div>
 
+  <div class="row">
 
-  <a ui-sref="presentation.detail({ presID: pres.$id })" ng-repeat="pres in roomDetail.presentations">{{pres.name}} <br /> </a>
+    <div class="col-xs-12">
+      <div class="card-container">
+        <div class="card-heading">
+          <div class="row">
 
+            <div class="col-xs-9">
+              <h2>Presentations</h2>
+            </div>
+
+            <div class="col-xs-3">
+              <ul class="list-inline text-right">
+                <li>
+                  <a href="">L</a>
+                  <a href="">S</a>
+                  <a href="">A</a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+
+            <div class="card-content-container">
+              <ul class="list-group">
+                <li class="list-group-item" ng-repeat="pres in vm.presentations">
+                  <a ui-sref="presentation.detail({ presID: pres.$id })">{{pres.name}}</a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </div>

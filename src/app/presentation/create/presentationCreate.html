@@ -7,13 +7,13 @@
           <div class="col-lg-12">
             <div class="form-group">
               <label>Presentation Name:</label>
-              <input type="text" class="form-control" id="name" placeholder="Presentation Name" ng-model="presCreate.name">
+              <input type="text" class="form-control" id="name" placeholder="Presentation Name" ng-model="vm.name">
             </div>
           </div>
         </div>
       </div>
 
-      <div class="row" ng-repeat="p in presCreate.polls">
+      <div class="row" ng-repeat="p in vm.polls">
             <!-- Poll Creation for whole presentation -->
           <div class="polls-wrapper">
             <div class="poll">
@@ -59,7 +59,7 @@
 
                 <div class="col-lg-8">
                   <div class="form-group">
-                    <div class="checkbox" ng-repeat="qType in presCreate.questionTypes">
+                    <div class="checkbox" ng-repeat="qType in vm.questionTypes">
                       <label><input type="checkbox" ng-model="p.questionType" value="">{{qType}}</label>
                     </div>
                   </div>
@@ -76,7 +76,7 @@
 
                 <div class="col-lg-8">
                   <div class="form-group">
-                    <div class="checkbox" ng-repeat="cType in presCreate.chartTypes">
+                    <div class="checkbox" ng-repeat="cType in vm.chartTypes">
                       <label><input type="checkbox" ng-model="p.chartType" value="">{{cType}}</label>
                     </div>
                   </div>
@@ -90,7 +90,7 @@
 
       <div class="row">
         <div class="col-lg-12">
-          <button type="button" ng-click="presCreate.onAddNewPollButtonClicked()" class="btn btn-primary text-center">Add Another Poll</button>
-          <button type="button" ng-click="presCreate.onCreateButtonClicked()" class="btn btn-primary text-center">Create Presentation</button>
+          <button type="button" ng-click="vm.onAddNewPollButtonClicked()" class="btn btn-primary text-center">Add Another Poll</button>
+          <button type="button" ng-click="vm.onCreateButtonClicked()" class="btn btn-primary text-center">Create Presentation</button>
         </div>
       </div>
