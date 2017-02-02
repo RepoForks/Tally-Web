@@ -1,3 +1,32 @@
-<div id="poll-wrapper">
+
+
+<div class="container" id="container">
+  <slick>
+
+    <!-- <div class="jumbotron text-center">
+        <h1>The Room List Page 1</h1>
+        <p>This page demonstrates <span class="text-danger">multiple</span> and <span class="text-danger">named</span> views.</p>
+        <a ui-sref="room.create()"><button>Create Room</button></a>
+    </div>
+
+    <div class="jumbotron text-center">
+        <h1>The Room List Page 2</h1>
+        <p>This page demonstrates <span class="text-danger">multiple</span> and <span class="text-danger">named</span> views.</p>
+        <a ui-sref="room.create()"><button>Create Room</button></a>
+    </div> -->
+  </slick>
+
+  <div ng-repeat="poll in vm.polls">
+    <!-- {{chartOptions[poll.$id].series[0].data}}
+    {{chartList[poll.$id]}} -->
+
+    <canvas id="poll.$id" class="chart chart-bar" chart-data="responses[poll.$id]" chart-labels="poll.answers"></canvas>
+
+
+    <!-- <highchart id="poll.$id" config="chartOptions[poll.$id]"></highchart> -->
+  </div>
 
 </div>
+
+{{chartOptions}}
+{{chartList}}
