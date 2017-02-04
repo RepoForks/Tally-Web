@@ -11,7 +11,7 @@ a {
   -webkit-transition: all 0.35s;
   -moz-transition: all 0.35s;
   transition: all 0.35s;
-  color: #fdcc52;
+  color: #F00000;
 }
 
 a:hover, a:focus {
@@ -39,6 +39,30 @@ p {
   font-size: 18px;
   line-height: 1.5;
   margin-bottom: 20px;
+}
+
+.block {
+  width: 40px;
+  height: 40px;
+  background-color: #F00000;
+  border-radius: 40px;
+}
+
+.card {
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,0,0,.5);
+  -webkit-box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.5);
+  transition: all .5s;
+  oveflow: hidden;
+  background-color: #FFFFFF;
+  padding: 25px;
+  margin: 20px 0;
+}
+
+.card:hover {
+  box-shadow: 0 8px 8px rgba(0,0,0,.25);
+  margin: 2px;
 }
 
 header {
@@ -122,6 +146,7 @@ header .image-container .image img {
 
 .info-content-choice ul li a {
   font-size: 19px;
+  color: #fdcc52;
 }
 
 .info-content-infomration {
@@ -142,4 +167,52 @@ header .image-container .image img {
 
 .info-content-information-inner p {
   font-size: 14px;
+}
+
+.room-list-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow-y: hidden;
+  background-color: #F9F9F9;
+  padding: 65px 50px 50px 50px;
+}
+
+.room-list-container a {
+  color: #000000;
+  font-size: 16px;
+}
+
+.room-list-full {
+  padding-top: 40px;
+}
+
+.room-list-full .title-header {
+  padding-bottom: 5px;
+}
+
+.room-detail-container {
+  position: relative;
+  width: 100%;
+  min-height: auto;
+  overflow-y: hidden;
+  background-color: #F9F9F9;
+  padding: 65px 50px 50px 50px;
+}
+
+.room-detail-full {
+  padding-top: 40px;
+}
+
+.room-detail-full .title-header {
+  padding-bottom: 5px;
+}
+
+.presentation-container {
+  position: relative;
+  width: 100%;
+  min-height: auto;
+  overflow-y: hidden;
+  background-color: #F9F9F9;
+  padding: 65px 50px 50px 50px;
 }
