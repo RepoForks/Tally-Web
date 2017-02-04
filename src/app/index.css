@@ -47,3 +47,11 @@
 .card-heading {
   padding: 5px 15px;
 }
+
+.card-content-container {
+  padding: 20px;
+}
+
+.card-content-container a {
+  padding: 0 10px;
+}

@@ -1,9 +1,9 @@
 <div class="container">
 
   <div class="jumbotron text-center">
-      <h1>The Room Detail Page</h1>
-      <p>This page demonstrates <span class="text-danger">multiple</span> and <span class="text-danger">named</span> views.</p>
-        <a ui-sref="room.presentationcreate({ roomID: vm.roomID})"><button>Create Presentation</button></a>
+    <h1>The Room Detail Page</h1>
+    <p>This page demonstrates <span class="text-danger">multiple</span> and <span class="text-danger">named</span> views.</p>
+    <a ui-sref="room.presentationcreate({ roomID: vm.roomID})"><button>Create Presentation</button></a>
   </div>
 
   <div class="row">
@@ -20,9 +20,9 @@
             <div class="col-xs-3">
               <ul class="list-inline text-right">
                 <li>
-                  <a href="">L</a>
-                  <a href="">S</a>
-                  <a href="">A</a>
+                  <a href=""><i class="fa fa-pencil-square-o"></i></a>
+                  <a href=""><i class="fa fa-pencil-square-o"></i></a>
+                  <a href=""><i class="fa fa-pencil-square-o"></i></a>
                 </li>
               </ul>
             </div>
@@ -34,17 +34,36 @@
           <div class="col-xs-12">
 
             <div class="card-content-container">
-              <ul class="list-group">
-                <li class="list-group-item" ng-repeat="pres in vm.presentations">
+
+              <div class="row" ng-repeat="pres in vm.presentations">
+                <div class="col-xs-9">
                   <a ui-sref="presentation.poll ({ presID: pres.$id, pollNum: 0 })">{{pres.name}}</a>
-                </li>
-              </ul>
-            </div>
+                </div>
 
-          </div>
+                <div class="col-xs-3">
+                  <ul class="list-inline text-right">
+                    <li>
+                      <a href=""><i class="fa fa-pencil-square-o"></i></a>
+                      <a href=""><i class="fa fa-pencil-square-o"></i></a>
+                      <a href=""><i class="fa fa-pencil-square-o"></i></a>
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+
+              <!-- <ul class="list-group">
+              <li class="list-group-item" ng-repeat="pres in vm.presentations">
+              <a ui-sref="presentation.poll ({ presID: pres.$id, pollNum: 0 })">{{pres.name}}</a>
+            </li>
+          </ul> -->
         </div>
-
       </div>
+
     </div>
   </div>
+
+</div>
+</div>
+</div>
 </div>
