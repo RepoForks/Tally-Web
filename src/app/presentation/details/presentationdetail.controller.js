@@ -74,18 +74,19 @@
     vm.pollsResponses = [];
 
     $scope.responses = {};
-    $scope.chartList = {js: 'ss'};
+    $scope.chartList = {};
     $scope.chartOptions = {};
 
     vm.charts = {};
 
-    var presKey = $stateParams.presID;
+    vm.presKey = $stateParams.presID;
+    vm.pollNum = $stateParams.pollNum;
 
     function retrievePresentation() {
 
-      vm.presentation = firebaseService.getPresentationRef().child('/' + presKey);
+      vm.presentation = firebaseService.getPresentationRef().child('/' + vm.presKey);
 
-      vm.polls = $firebaseArray(firebaseService.getPollRef().child('/' + presKey));
+      vm.polls = $firebaseArray(firebaseService.getPollRef().child('/' + vm.presKey));
 
       vm.polls.$loaded(snap => {
 
@@ -95,8 +96,11 @@
           firebaseService.getPollResponsesRef().child('/' + poll.$id).on('value', function(child) {
             $scope.responses[poll.$id] = child.val();
             $scope.chartOptions[poll.$id].series[0].data = child.val();
-            $scope.$digest();
-            console.log(child.val());
+
+            if(!$scope.$$phase) {
+              $scope.$digest();
+              console.log(child.val());
+            }
           });
         });
 
@@ -127,6 +131,14 @@
       //   });
       //
       //  })
+    }
+
+    vm.nextPoll = function nextPoll() {
+      return parseInt(vm.pollNum, 10) + 1;
+    }
+
+    vm.previousPoll = function previousPoll() {
+      return parseInt(vm.pollNum, 10) - 1;
     }
 
     function createOptions(poll) {

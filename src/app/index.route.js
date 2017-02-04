@@ -77,13 +77,21 @@
         authenticate: true
       })
 
-      .state('presentation.detail', {
-        url: '/:presID/details',
+      // .state('presentation.detail', {
+      //   url: '/:presID/details',
+      //   templateUrl: 'app/presentation/details/presentationDetail.html',
+      //   controller: 'PresentationDetailController',
+      //   controllerAs: 'vm',
+      //   authenticate: true
+      // })
+
+      .state('presentation.poll', {
+        url: '/:presID/:pollNum',
         templateUrl: 'app/presentation/details/presentationDetail.html',
         controller: 'PresentationDetailController',
         controllerAs: 'vm',
         authenticate: true
-      });
+      })
 
     $urlRouterProvider.otherwise('/');
   }

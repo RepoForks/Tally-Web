@@ -36,7 +36,7 @@
             <div class="card-content-container">
               <ul class="list-group">
                 <li class="list-group-item" ng-repeat="pres in vm.presentations">
-                  <a ui-sref="presentation.detail({ presID: pres.$id })">{{pres.name}}</a>
+                  <a ui-sref="presentation.poll ({ presID: pres.$id, pollNum: 0 })">{{pres.name}}</a>
                 </li>
               </ul>
             </div>

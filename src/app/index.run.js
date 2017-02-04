@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-
+  
   angular
   .module('tally')
   .run(runBlock);
@@ -10,7 +10,7 @@
 
     authenticationService.getAuth().$onAuthStateChanged(function(authData) {
       var data = JSON.stringify(authData);
-      
+
       $window.sessionStorage.setItem('currentUser', data);
       $rootScope.authData = authData;
       authenticationService.setCurrentUser(authData);

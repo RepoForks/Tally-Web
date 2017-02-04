@@ -1,32 +1,10 @@
+<div class="container">
 
+    <section>
+      <canvas id="vm.polls[vm.pollNum].$id" class="chart chart-bar" chart-data="responses[vm.polls[vm.pollNum].$id]" chart-labels="vm.polls[vm.pollNum].answers"></canvas>
 
-<div class="container" id="container">
-  <slick>
-
-    <!-- <div class="jumbotron text-center">
-        <h1>The Room List Page 1</h1>
-        <p>This page demonstrates <span class="text-danger">multiple</span> and <span class="text-danger">named</span> views.</p>
-        <a ui-sref="room.create()"><button>Create Room</button></a>
-    </div>
-
-    <div class="jumbotron text-center">
-        <h1>The Room List Page 2</h1>
-        <p>This page demonstrates <span class="text-danger">multiple</span> and <span class="text-danger">named</span> views.</p>
-        <a ui-sref="room.create()"><button>Create Room</button></a>
-    </div> -->
-  </slick>
-
-  <div ng-repeat="poll in vm.polls">
-    <!-- {{chartOptions[poll.$id].series[0].data}}
-    {{chartList[poll.$id]}} -->
-
-    <canvas id="poll.$id" class="chart chart-bar" chart-data="responses[poll.$id]" chart-labels="poll.answers"></canvas>
-
-
-    <!-- <highchart id="poll.$id" config="chartOptions[poll.$id]"></highchart> -->
-  </div>
+      <a ui-sref="presentation.poll({ presID: vm.presKey, pollNum: vm.previousPoll() })"><button ng-show="vm.pollNum > 0" id="prev">Previous Poll</button></a>
+      <a ng-click="vm.previousPoll()" ui-sref="presentation.poll({ presID: vm.presKey, pollNum: vm.nextPoll() })"><button ng-show="vm.pollNum <= vm.polls.length" id="next">Next Poll</button></a>
+    </section>
 
 </div>
-
-{{chartOptions}}
-{{chartList}}

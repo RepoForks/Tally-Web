@@ -21,12 +21,8 @@
     "firebase": "^3.6.4",
     "angularfire": "^2.2.0",
     "components-font-awesome": "^4.7.0",
-    "highcharts": "^5.0.7",
-    "slick-carousel": "^1.6.0",
-    "angular-slick": "^0.2.1",
     "chart.js": "^2.4.0",
-    "angular-chart.js": "^1.1.1",
-    "highcharts-ng": "^1.0.0"
+    "angular-chart.js": "^1.1.1"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.3"
@@ -45,7 +41,6 @@
   },
   "resolutions": {
     "jquery": "~2.1.4",
-    "angular": "~1.5.3",
-    "slick-carousel": "^1.6.0"
+    "angular": "~1.5.3"
   }
 }
