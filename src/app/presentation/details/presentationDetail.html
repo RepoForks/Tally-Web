@@ -4,7 +4,7 @@
       <canvas id="vm.polls[vm.pollNum].$id" class="chart chart-bar" chart-data="responses[vm.polls[vm.pollNum].$id]" chart-labels="vm.polls[vm.pollNum].answers"></canvas>
 
       <a ui-sref="presentation.poll({ presID: vm.presKey, pollNum: vm.previousPoll() })"><button ng-show="vm.pollNum > 0" id="prev">Previous Poll</button></a>
-      <a ng-click="vm.previousPoll()" ui-sref="presentation.poll({ presID: vm.presKey, pollNum: vm.nextPoll() })"><button ng-show="vm.pollNum <= vm.polls.length" id="next">Next Poll</button></a>
+      <a ng-click="vm.previousPoll()" ui-sref="presentation.poll({ presID: vm.presKey, pollNum: vm.nextPoll() })"><button ng-show="vm.pollNum < vm.polls.length" id="next">Next Poll</button></a>
     </section>
 
 </div>
