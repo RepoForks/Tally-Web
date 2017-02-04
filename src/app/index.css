@@ -55,3 +55,60 @@
 .card-content-container a {
   padding: 0 10px;
 }
+
+
+
+.page-wrapper {
+  margin-top: 50px;
+}
+
+.landing-header {
+  padding: 90px 30px;
+  background: #FFFFFF;
+}
+
+.landing-header .landing-image-container img, .landing-info .landing-image-container img {
+  width: 60%;
+}
+
+.landing-heading-container {
+  margin-top: 120px;
+  border: 1px solid red;
+}
+
+.landing-heading-container h2 {
+  font-size: 3em;
+  font-weight: 600;
+}
+
+.landing-heading-container p {
+  font-size: 18px;
+  font-weight: 400;
+  color: #C2C2C2;
+}
+
+.landing-info {
+  padding: 90px 30px;
+  background: #262A34;
+  border: 1px solid green;
+}
+
+.landing-info .landing-heading-container h2 {
+  color: #FFFFFF;
+}
+
+.landing-info .landing-heading-container a {
+  font-size: 1.4em;
+  margin: 30px;
+}
+
+.landing-info-content {
+  padding: 15px 20px;
+}
+
+.landing-info-content h4 {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: #FFFFFF;
+  font-size: 1.5em;
+}
