@@ -9,6 +9,8 @@
     var vm = this;
 
     // <presentation>
+    vm.presRef = null;
+
     vm.presentation = {};
     vm.polls = [];
     vm.pollsResponses = [];
@@ -45,11 +47,15 @@
     }
 
     vm.nextPoll = function nextPoll() {
-      return parseInt(vm.pollNum, 10) + 1;
+      vm.pollNum = parseInt(vm.pollNum, 10) + 1;
+      vm.presentation.child('/currentPoll').set(vm.pollNum);
+      return vm.pollNum;
     }
 
     vm.previousPoll = function previousPoll() {
-      return parseInt(vm.pollNum, 10) - 1;
+      vm.pollNum = parseInt(vm.pollNum, 10) - 1;
+      vm.presentation.child('/currentPoll').set(vm.pollNum);
+      return vm.pollNum;
     }
 
     function createOptions(poll) {
