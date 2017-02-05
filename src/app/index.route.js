@@ -16,6 +16,20 @@
         authenticate: false
       })
 
+      .state('login', {
+        url: '/login',
+        templateUrl: 'app/auth/auth.html',
+        controller: 'AuthController',
+        controllerAs: 'vm'
+      })
+
+      .state('register', {
+        url: '/register',
+        templateUrl: 'app/auth/auth.html',
+        controller: 'AuthController',
+        controllerAs: 'vm'
+      })
+
       .state('rooms', {
         url: '/rooms',
         templateUrl: 'app/room/list/roomList.html',

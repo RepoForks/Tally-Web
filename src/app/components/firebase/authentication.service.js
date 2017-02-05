@@ -6,7 +6,7 @@
     .service('authenticationService', authenticationService);
 
   /** @ngInject */
-  function authenticationService($window, $rootScope, $firebaseAuth) {
+  function authenticationService($window, $rootScope, $firebaseAuth, UserSerivce) {
 
     var auth = $firebaseAuth();
 
@@ -17,6 +17,8 @@
     this.setCurrentUser = setCurrentUser;
     this.isLoggedIn = isLoggedIn;
     this.logout = logout;
+    this.signInWithEmailAndPassword = signInWithEmailAndPassword;
+    this.registerWithEmailAndPassword = registerWithEmailAndPassword;
 
     this.onAuthStateChanged = onAuthStateChanged;
 
@@ -42,6 +44,21 @@
 
     function logout() {
       auth.$signOut();
+    }
+
+    function signInWithEmailAndPassword(email, password) {
+      auth.$signInWithEmailAndPassword(email, password);
+    }
+
+    function registerWithEmailAndPassword(email, password) {
+      auth.$createUserWithEmailAndPassword(email, password)
+        .then(child => {
+          console.log(child);
+          UserSerivce.createUserEntry(child);
+        })
+        .catch(err => {
+          console.log(err);
+        })
     }
 
     function onAuthStateChanged() {
