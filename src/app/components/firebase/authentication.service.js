@@ -47,17 +47,23 @@
     }
 
     function signInWithEmailAndPassword(email, password) {
-      auth.$signInWithEmailAndPassword(email, password);
+      //auth.$signInWithEmailAndPassword(email, password);
+      return auth.$signInWithEmailAndPassword(email, password).then(snap => {
+        return snap;
+      }).catch(error => {
+        return error;
+      })
     }
 
     function registerWithEmailAndPassword(email, password) {
-      auth.$createUserWithEmailAndPassword(email, password)
+      return auth.$createUserWithEmailAndPassword(email, password)
         .then(child => {
-          console.log(child);
           UserSerivce.createUserEntry(child);
+          return child;
         })
         .catch(err => {
           console.log(err);
+          return err;
         })
     }
 

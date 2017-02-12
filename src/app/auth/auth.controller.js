@@ -14,16 +14,28 @@
     $scope.password = "";
 
     vm.login = function() {
-      authenticationService.signInWithEmailAndPassword($scope.email, $scope.password);
+      authenticationService.signInWithEmailAndPassword($scope.email, $scope.password).then(s => {
+        handleAuthSubmission(s);
+      });
     }
 
     vm.register = function() {
-      console.log($scope.email);
-      authenticationService.registerWithEmailAndPassword($scope.email, $scope.password);
+      authenticationService.registerWithEmailAndPassword($scope.email, $scope.password).then(s => {
+        handleAuthSubmission(s);
+      });
     }
 
     vm.forgottenPassword = function() {
 
+    }
+
+    function handleAuthSubmission(val) {
+      if(val.message == undefined) {
+        // success: redirect
+        $state.go('rooms');
+      } else {
+        console.log(s.message);
+      }
     }
 
   }
