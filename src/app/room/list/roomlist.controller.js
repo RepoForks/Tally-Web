@@ -6,7 +6,7 @@
     .controller('RoomListController', RoomListController);
 
   /** @ngInject */
-  function RoomListController($window, $rootScope, firebaseService, $firebaseArray, authenticationService) {
+  function RoomListController($state, $window, $rootScope, firebaseService, $firebaseArray, authenticationService) {
     var vm = this;
 
     vm.rooms = [];
@@ -19,11 +19,8 @@
     function getRooms() {
       getCreatedRooms();
       getEnrolledRooms();
-      console.log(authenticationService.getCurrentUser());
-      vm.rooms = $firebaseArray(firebaseService.getUserRoomRef().child('/' + authenticationService.getCurrentUser().uid));
-      console.log(vm.rooms);
+      // vm.rooms = $firebaseArray(firebaseService.getUserRoomRef().child('/' + authenticationService.getCurrentUser().uid));
     }
-
 
     function getCreatedRooms() {
         vm.createdRooms = $firebaseArray(firebaseService.getUserCreatedRoomRef().child('/' + userID));
@@ -31,6 +28,14 @@
 
     function getEnrolledRooms() {
         vm.enrolledRooms = $firebaseArray(firebaseService.getUserRoomRef().child('/' + userID));
+    }
+
+    vm.navigateToRoom = function(id) {
+      $state.go('room.detail', { roomID: id});
+    }
+
+    vm.navigateToCreation = function() {
+      $state.go('room.create');
     }
 
     getRooms();

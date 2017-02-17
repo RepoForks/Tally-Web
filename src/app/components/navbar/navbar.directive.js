@@ -3,16 +3,13 @@
 
   angular
     .module('tally')
-    .directive('acmeNavbar', acmeNavbar);
+    .directive('tallybar', tallybar);
 
   /** @ngInject */
-  function acmeNavbar() {
+  function tallybar() {
     var directive = {
       restrict: 'E',
       templateUrl: 'app/components/navbar/navbar.html',
-      scope: {
-          creationDate: '='
-      },
       controller: NavbarController,
       controllerAs: 'vm',
       bindToController: true
@@ -24,24 +21,12 @@
     function NavbarController(moment, authenticationService) {
       var vm = this;
 
-      // "vm.creationDate" is available by directive option "bindToController: true"
-      vm.relativeDate = moment(vm.creationDate).fromNow
-
-      vm.showSignedInLinks = function() {
+      vm.isLoggedIn = function() {
         return authenticationService.isLoggedIn() == true;
         //return authenticationService.isLoggedIn();
       }
 
-      vm.onSignInClicked = function() {
-        console.log("SIgned In Clicked");
-        authenticationService.getAuth().$signInWithEmailAndPassword('rex@email.com', 'scania93');
-      }
-
-      vm.onSignUpClicked = function() {
-        // TODO Show dialog
-      }
-
-      vm.onLogoutClicked = function() {
+      vm.logout = function() {
         return authenticationService.logout();
       }
     }

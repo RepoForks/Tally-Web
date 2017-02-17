@@ -1,0 +1,24 @@
+/**
+colors
+primary: #3F51B5
+primary dark: #303F9F
+accent: #FF5722
+
+*/
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.title-container {
+}
+
+.title-container .title-icon {
+  font-size: 18px;
+  padding: 15px 10px;
+}
+
+.roomButton {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}

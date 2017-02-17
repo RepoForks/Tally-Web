@@ -5,7 +5,7 @@
   .module('tally')
   .controller('PresentationDetailController', PresentationDetailController);
 
-  function PresentationDetailController($scope, $stateParams, $firebaseObject, $firebaseArray, firebaseService) {
+  function PresentationDetailController($scope, $stateParams, $firebaseObject, $firebaseArray, firebaseService, ChartService) {
     var vm = this;
 
     // <presentation>
@@ -30,7 +30,9 @@
       vm.polls.$loaded(snap => {
 
         vm.polls.forEach(poll => {
-          $scope.chartOptions[poll.$id] = createOptions(poll);
+          // $scope.chartOptions[poll.$id] = createOptions(poll);
+          $scope.chartOptions[poll.$id] = ChartService.createBar(poll);
+          console.log($scope.chartOptions[poll.$id]);
 
           firebaseService.getPollResponsesRef().child('/' + poll.$id).on('value', function(child) {
             $scope.responses[poll.$id] = child.val();
@@ -56,6 +58,29 @@
       vm.pollNum = parseInt(vm.pollNum, 10) - 1;
       vm.presentation.child('/currentPoll').set(vm.pollNum);
       return vm.pollNum;
+    }
+
+    function createPoll(poll) {
+
+      switch(poll.chartType) {
+
+        case 'BAR':
+          break;
+
+        case 'PIE':
+          break;
+
+        case 'WORD_CLOUD':
+          break;
+
+        case 'RANK':
+          break;
+
+        default:
+          break;
+
+      }
+
     }
 
     function createOptions(poll) {
