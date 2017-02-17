@@ -6,7 +6,7 @@
     .service('authenticationService', authenticationService);
 
   /** @ngInject */
-  function authenticationService($window, $rootScope, $firebaseAuth, UserSerivce) {
+  function authenticationService($window, $rootScope, $state, $firebaseAuth, UserSerivce) {
 
     var auth = $firebaseAuth();
 

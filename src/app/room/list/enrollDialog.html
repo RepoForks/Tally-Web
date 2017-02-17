@@ -1,0 +1,36 @@
+<!-- <div class="modal-header">
+<h3 class="modal-title">I'm a modal!</h3>
+</div>
+<div class="modal-body">
+Demo form submit:
+<br/>
+<form ng-submit="ok()">
+<div class="input-group animated fadeIn">
+<input type="text" class="form-control finderBar" ng-model="searchTerm" placeholder="City, State..." autofocus>
+<span class="input-group-btn">
+<button class="btn btn-default" type="button" ng-click="ok()">Go!</button>
+</span>
+</div>
+</form>
+
+</div>
+<div class="modal-footer">
+<button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div> -->
+
+<!-- Modal -->
+<div class="modal-content">
+  <div class="modal-header">
+    <h3 class="modal-title" id="exampleModalLabel">Enroll on Module</h5>
+  </div>
+  <div class="modal-body">
+    <form>
+      <input type="text" class="form-control" ng-model="moduleCode" placeholder="Module Code" autofocus>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-primary" ng-click="vm.enroll(moduleCode)">Enroll</button>
+  </div>
+</div>

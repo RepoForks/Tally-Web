@@ -18,7 +18,7 @@
     return directive;
 
     /** @ngInject */
-    function NavbarController(moment, authenticationService) {
+    function NavbarController($state, moment, authenticationService) {
       var vm = this;
 
       vm.isLoggedIn = function() {
@@ -27,6 +27,7 @@
       }
 
       vm.logout = function() {
+        $state.go('home');
         return authenticationService.logout();
       }
     }

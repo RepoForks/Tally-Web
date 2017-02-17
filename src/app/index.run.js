@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  
+
   angular
   .module('tally')
   .run(runBlock);
@@ -14,6 +14,10 @@
       $window.sessionStorage.setItem('currentUser', data);
       $rootScope.authData = authData;
       authenticationService.setCurrentUser(authData);
+
+      if(authData == null) {
+        $state.go('home');
+      }
 
     });
 

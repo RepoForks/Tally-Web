@@ -6,8 +6,12 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, toastr, firebaseService) {
+  function MainController($state, authenticationService, $timeout, webDevTec, toastr, firebaseService) {
     var vm = this;
+
+    if(authenticationService.getCurrentUser() != null) {
+      $state.go('rooms');
+    }
 
     vm.awesomeThings = [];
     vm.classAnimation = '';
