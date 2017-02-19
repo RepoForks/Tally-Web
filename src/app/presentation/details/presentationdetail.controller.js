@@ -32,7 +32,6 @@
         vm.polls.forEach(poll => {
           // $scope.chartOptions[poll.$id] = createOptions(poll);
           $scope.chartOptions[poll.$id] = ChartService.createBar(poll);
-          console.log($scope.chartOptions[poll.$id]);
 
           firebaseService.getPollResponsesRef().child('/' + poll.$id).on('value', function(child) {
             $scope.responses[poll.$id] = child.val();
@@ -40,7 +39,6 @@
 
             if(!$scope.$$phase) {
               $scope.$digest();
-              console.log(child.val());
             }
           });
         });

@@ -116,7 +116,11 @@
         templateUrl: 'app/presentation/details/presentationDetail.html',
         controller: 'PresentationDetailController',
         controllerAs: 'vm',
-        authenticate: true
+        authenticate: true,
+        params: {
+          presID: null,
+          pollNum: null
+        },
       })
 
     $urlRouterProvider.otherwise('/');
