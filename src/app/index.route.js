@@ -53,6 +53,18 @@
         authenticate: true
       })
 
+      .state('room.update', {
+        url: '/:roomID/update',
+        templateUrl: 'app/room/create/roomCreate.html',
+        controller: 'RoomCreateController',
+        controllerAs: 'vm',
+        params: {
+          roomID: null,
+          room: null
+        },
+        authenticate: true
+      })
+
       .state('room.detail', {
         url: '/:roomID/details',
         templateUrl: 'app/room/details/roomDetail.html',

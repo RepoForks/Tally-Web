@@ -1,4 +1,85 @@
-<div class="row">
+<section>
+  <div class="container">
+
+    <div class="row">
+      <div class="col-sm-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
+        <div class="card">
+          <div class="row">
+            <div class="col-sm-12 card-title-container">
+              <h2 ng-show="creation" class="text-center"><i class="fa fa-user-plus title-icon"/>Add Module</h2>
+              <h2 ng-show="!creation" class="text-center"><i class="fa fa-user-plus title-icon"/>Update Module</h2>
+            </div>
+          </div>
+
+          <div class="card-padding">
+            <form name="form" novalidate ng-submit="form.$valid && vm.onSubmitButtonClicked()">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group input-container">
+                    <label for="name">Name:</label>
+                    <input class="form-control input" type="text" id="name" name="name" ng-model="name" placeholder="Module Name" required />
+                    <p class="required" ng-show="form.name.$error.required">* Required</span>
+                  </div>
+
+                  <div class="form-group input-container">
+                    <label for="code">Code:</label>
+                    <input class="form-control input" type="text" name="code" id="code" ng-model="code" placeholder="Module Code" required />
+                    <p class="required" ng-show="form.code.$error.required">* Required</span>
+                  </div>
+
+                  <div class="form-group input-container">
+                    <label for="studentList">Student List:</label>
+                    <textarea class="form-control input" type="text" name="studentList" id="studentList" ng-model="studentList" />
+                    <button class="btn btn-primary import-list-btn" type="button">Import</button>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-12">
+                  <button ng-show="creation" type="submit" class="btn btn-primary center-block submit-button">Create</button>
+                  <button ng-show="!creation" type="submit" class="btn btn-primary center-block submit-button">Update</button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+        <!-- <div class="row">
+          <div class="col-sm-8">
+            <div class="title-container">
+              <h2><i class="fa fa-user-plus title-icon"/>Add Module</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12 col-lg-6">
+            <div class="form-group">
+              <label>Name:</label>
+              <input type="text" class="form-control" id="name" placeholder="Room Name" ng-model="vm.roomName">
+            </div>
+            <div class="form-group">
+              <label>Room Code:</label>
+              <input type="text" class="form-control" id="code" placeholder="Room Code" ng-model="vm.roomCode">
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-lg-6">
+            <div class="form-group">
+              <label for="userList">Student List:</label>
+              <textarea class="form-control" placeholder="Seperate Users emails using ;" id="userList" ng-model="vm.userList"></textarea>
+            </div>
+          </div>
+        </div> -->
+
+<!-- <div class="row">
   <div class="col-lg-12 room-create-wrapper">
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -46,4 +127,4 @@
 
     </div>
   </div>
-</div>
+</div> -->

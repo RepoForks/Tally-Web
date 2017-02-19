@@ -65,6 +65,10 @@
       });
     }
 
+    vm.navigateToUpdate = function(room) {
+      $state.go('room.update', {roomID: room.id, room: room});
+    }
+
     getRooms();
 
   }

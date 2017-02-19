@@ -118,11 +118,11 @@
             <tr ng-repeat="room in vm.createdRooms" ng-click="vm.navigateToRoom(room.id)">
               <th>{{room.name}}</th>
               <th>{{room.code}}</th>
-              <th>01/02/2017</th>
+              <th>{{room.dateCreated | date: 'dd-MM-yyyy'}}</th>
               <th>
                 <ul class="list-inline">
-                  <li><a href=""><i class="fa fa-wrench"></i></a><li>
-                  <li><a href=""><i class="fa fa-trash-o"></i></a><li>
+                  <li ng-click="vm.navigateToUpdate(room)"><a><i class="fa fa-wrench"></i></a><li>
+                  <li ng-click="vm.deleteRoom(room)"><a><i class="fa fa-trash-o"></i></a><li>
                 </ul>
               </th>
             </tr>
@@ -130,7 +130,7 @@
             <tr ng-repeat="room in vm.enrolledRooms" ng-click="vm.navigateToRoom(room.id)">
               <th>{{room.name}}</th>
               <th>{{room.code}}</th>
-              <th>01/02/2017</th>
+              <th>{{room.dateCreated | date: 'dd-MM-yyyy'}}</th>
               <th></th>
             </tr>
 
