@@ -27,7 +27,8 @@
       chartType: '',
       answers: ['', ''],
       locked: false,
-      timelimit: 0
+      timelimit: 0,
+      numPolls: 1
     };
 
     // default empty poll
@@ -49,8 +50,13 @@
       // create the actual presentation
       var presentation = {
         name: vm.name,
-        room: vm.room
+        room: vm.room,
+        dateCreated: Date.now(),
+        numPolls: vm.polls.length,
+        currentPoll: 0
       };
+
+      console.log(presentation);
 
       // create the presentation in fb
       var presKey = firebaseService.getPresentationRef().push().key

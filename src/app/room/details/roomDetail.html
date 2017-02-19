@@ -12,7 +12,7 @@
           </div>
 
           <div class="col-sm-4">
-            <button class="btn btn-primary roomButton" ng-click="">
+            <button class="btn btn-primary roomButton" ng-click="vm.addPresentation()">
               <span>
                 <i class="fa fa-plus"></i>
                 <span>Add Presentation</span>
@@ -33,18 +33,18 @@
               <th>Name</th>
               <th>Number of Polls</th>
               <th>Date Created</th>
-              <th>Published</th>
-              <th></th>
+              <th ng-show="creator">Published</th>
+              <th ng-show="creator"></th>
             </tr>
           </thead>
 
           <tbody>
             <tr ng-repeat="pres in vm.presentations" ng-click="vm.navigateToPresentation(pres)">
               <th>{{pres.name}}</th>
-              <th>4</th>
+              <th>{{pres.numPolls}}</th>
               <th>{{pres.dateCreated | date: 'dd-MM-yyyy'}}</th>
-              <th>Yes</th>
-              <th>
+              <th ng-show="creator">Yes</th>
+              <th ng-show="creator">
                 <ul class="list-inline">
                   <li ng-click=""><a><i class="fa fa-wrench"></i></a><li>
                   <li ng-click=""><a><i class="fa fa-pencil-square-o"></i></a><li>

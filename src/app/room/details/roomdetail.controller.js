@@ -20,7 +20,7 @@
     }
 
     vm.addPresentation = function() {
-
+      $state.go('room.presentationcreate', {roomID: vm.roomID});
     }
 
     vm.navigateToPresentation = function(pres) {
