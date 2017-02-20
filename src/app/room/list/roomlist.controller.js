@@ -6,14 +6,16 @@
     .controller('RoomListController', RoomListController);
 
   /** @ngInject */
-  function RoomListController($state, $window, $rootScope, firebaseService, $firebaseArray, authenticationService, $uibModal) {
+  function RoomListController($state, $stateParams, $window, $rootScope, firebaseService, $firebaseArray, authenticationService, $uibModal) {
     var vm = this;
+
+    vm.userID = $stateParams.userID;
 
     vm.rooms = [];
     vm.createdRooms = [];
     vm.enrolledRooms = [];
 
-    var userID = authenticationService.getCurrentUser().uid;
+    //var userID = authenticationService.getCurrentUser().uid;
 
     // TODO User auth required alonside their uid
     function getRooms() {
@@ -23,11 +25,11 @@
     }
 
     function getCreatedRooms() {
-      vm.createdRooms = $firebaseArray(firebaseService.getUserCreatedRoomRef().child('/' + userID));
+      vm.createdRooms = $firebaseArray(firebaseService.getUserCreatedRoomRef().child('/' + vm.userID));
     }
 
     function getEnrolledRooms() {
-      vm.enrolledRooms = $firebaseArray(firebaseService.getUserRoomRef().child('/' + userID));
+      vm.enrolledRooms = $firebaseArray(firebaseService.getUserRoomRef().child('/' + vm.userID));
     }
 
     vm.navigateToRoom = function(id) {

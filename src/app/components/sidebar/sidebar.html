@@ -1,13 +1,12 @@
 <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
-        <li class="sidebar-brand">
-            <a href="#">
-                Tally
-            </a>
-        </li>
-        <li><a href="#"><i class="fa fa-university" /></a></li>
-        <li><a href="#"><i class="fa fa-comment" /></a></li>
-        <li><a href="#"><i class="fa fa-gear" /></a></li>
-        <li><a href="#"><i class="fa fa-sign-out" /></a></li>
+        <li class="sidebar-brand"><a href="#">Tally</a></li>
+        <li ng-show="!vm.loggedIn()"><a ui-sref="register()"><i class="fa fa-user-plus" /></a></li>
+        <li ng-show="!vm.loggedIn()"><a ui-sref="login()"><i class="fa fa-sign-in" /></a></li>
+
+        <li ng-show="vm.loggedIn()"><a ui-sref="room.list({userID: vm.getUserID})"><i class="fa fa-university" /></a></li>
+        <li ng-show="vm.loggedIn()"><a href="#"><i class="fa fa-comment" /></a></li>
+        <li ng-show="vm.loggedIn()"><a href="#"><i class="fa fa-gear" /></a></li>
+        <li ng-show="vm.loggedIn()"><a ui-sref="logout()"><i class="fa fa-sign-out" /></a></li>
     </ul>
 </div>

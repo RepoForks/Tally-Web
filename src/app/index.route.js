@@ -30,18 +30,27 @@
         controllerAs: 'vm'
       })
 
-      .state('rooms', {
-        url: '/rooms',
-        templateUrl: 'app/room/list/roomList.html',
-        controller: 'RoomListController',
-        controllerAs: 'vm',
-        authenticate: true
+      .state('logout', {
+        url: '/logout',
+        controller: function($state, authenticationService) {
+			       authenticationService.logout();
+             $state.go('home');
+		    }
+
       })
 
       // empty view
       .state('room', {
         url: '/room',
         templateUrl: 'app/room/room.html',
+        authenticate: true
+      })
+
+      .state('room.list', {
+        url: '/:userID/rooms',
+        templateUrl: 'app/room/list/roomList.html',
+        controller: 'RoomListController',
+        controllerAs: 'vm',
         authenticate: true
       })
 
@@ -86,6 +95,9 @@
         templateUrl: 'app/presentation/create/presentationCreate.html',
         controller: 'PresentationCreateController',
         controllerAs: 'vm',
+        params: {
+          editMode: false
+        },
         authenticate: true
       })
 
@@ -101,6 +113,17 @@
         controller: 'PresentationCreateController',
         controllerAs: 'vm',
         authenticate: true
+      })
+
+      .state('presentation.edit', {
+        url: '/:presID/p/update',
+        templateUrl: 'app/presentation/details/presentationDetail.html',
+        controller: 'PresentationDetailController',
+        controllerAs: 'vm',
+        authenticate: true,
+        params: {
+          editMode: true
+        }
       })
 
       // .state('presentation.detail', {

@@ -10,7 +10,7 @@
     var vm = this;
 
     if(authenticationService.getCurrentUser() != null) {
-      $state.go('rooms');
+      $state.go('room.list', {userID: authenticationService.getCurrentUser().uid});
     }
 
     vm.awesomeThings = [];

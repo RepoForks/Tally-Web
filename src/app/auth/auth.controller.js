@@ -15,6 +15,7 @@
 
     vm.login = function() {
       authenticationService.signInWithEmailAndPassword($scope.email, $scope.password).then(s => {
+        console.log(s);
         handleAuthSubmission(s);
       });
     }
@@ -32,7 +33,7 @@
     function handleAuthSubmission(val) {
       if(val.message == undefined) {
         // success: redirect
-        $state.go('rooms');
+        $state.go('room.list', {userID: val.uid});
       } else {
         console.log(s.message);
       }

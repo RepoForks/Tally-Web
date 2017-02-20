@@ -17,8 +17,16 @@
     return directive;
   }
 
-  function SidebarController() {
+  function SidebarController(authenticationService) {
     var vm = this;
+
+    vm.getUserID = function() {
+      return authenticationService.getCurrentUser().uid;
+    }
+
+    vm.loggedIn = function() {
+      return authenticationService.isLoggedIn();
+    }
   }
 
 }());
