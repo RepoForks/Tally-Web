@@ -10,6 +10,34 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 100px;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 100px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+    background-color: #F4F6F9;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -100px;
+}
+
 .required {
   color: red;
   margin-top: 5px;
@@ -50,6 +78,12 @@ body {
   padding-right: 5px
 }
 
+.pres-title-input {
+  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
 ul li a i {
   padding: 7px;
 }
@@ -83,4 +117,42 @@ ul li a i {
   display: inline-block;
   height: 100%;
   width: 0px;
+}
+
+.question-type-container {
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 0;
+}
+
+.question-type-container i {
+  font-size: 30px;
+}
+
+.question-type-container h5 {
+  font-size: 20px;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 100px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
 }

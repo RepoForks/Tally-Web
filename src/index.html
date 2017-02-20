@@ -22,17 +22,15 @@
 </head>
 <body>
 
-  <tallybar></tallybar>
-  <!--[if lt IE 10]>
-  <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
+  <div id="wrapper">
 
-<div id="page-wrapper">
+    <sidebar></sidebar>
 
-  <div id="pager-wrapper-inner">
+    <div id="page-content-wrapper">
       <div ui-view></div>
+
+    </div>
   </div>
-</div>
 
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
