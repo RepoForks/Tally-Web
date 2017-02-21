@@ -3,6 +3,6 @@
 
   angular
     .module('tally', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages',
-    'ngAria', 'ngResource', 'ui.router', 'ui.bootstrap', 'toastr', 'firebase', 'chart.js', 'slideMenu']);
+    'ngAria', 'ngResource', 'ui.router', 'ui.bootstrap', 'toastr', 'firebase', 'chart.js']);
 
 })();

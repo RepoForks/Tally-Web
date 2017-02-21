@@ -2,9 +2,7 @@
 (function() {
   'use strict';
 
-  angular
-    .module('tally')
-    .constant('malarkey', malarkey)
-    .constant('moment', moment);
+  // angular
+  //   .module('tally')
 
 })();
