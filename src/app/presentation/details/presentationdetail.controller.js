@@ -93,7 +93,7 @@
           text: poll.question
         },
         xAxis: {
-          categories: poll.answers
+          categories: poll.choices
         },
         yAxis: {
           title: {
