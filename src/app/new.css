@@ -13,6 +13,10 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+div:focus {
+  outline: none;
+}
+
 #wrapper {
     padding-left: 0;
     display:block;
@@ -40,6 +44,10 @@ body {
 #wrapper.toggled #page-content-wrapper {
     position: absolute;
     margin-right: -100px;
+}
+
+.heading-container {
+  border-bottom: 1px solid #F1F0F0;
 }
 
 .required {
@@ -124,9 +132,18 @@ ul li a i {
 }
 
 .question-type-container {
-  padding: 20px;
+  padding: 25px;
+  margin: 15px 0;
   border: 1px solid black;
   border-radius: 0;
+}
+
+.question-type-container:hover {
+  background-color: #C2c2c2;
+}
+
+.question-type-selected {
+  background-color: #C2c2c2;
 }
 
 .question-type-container i {
@@ -135,6 +152,14 @@ ul li a i {
 
 .question-type-container h5 {
   font-size: 20px;
+}
+
+.response-add-button {
+  margin-top: 35px;
+}
+
+.response-input-container input {
+  margin: 10px 0;
 }
 
 @media(min-width:768px) {
