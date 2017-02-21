@@ -79,7 +79,10 @@
         templateUrl: 'app/room/details/roomDetail.html',
         controller: 'RoomDetailController',
         controllerAs: 'vm',
-        authenticate: true
+        authenticate: true,
+        params: {
+          creator: -1
+        }
       })
 
       .state('room.presentation', {

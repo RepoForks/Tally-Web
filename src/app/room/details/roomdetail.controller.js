@@ -6,8 +6,10 @@
     .controller('RoomDetailController', RoomDetailController);
 
   /** @ngInject */
-  function RoomDetailController($scope, $state, $stateParams, firebaseService, $firebaseArray) {
+  function RoomDetailController($scope, $state, $stateParams, authenticationService, firebaseService, $firebaseArray) {
     var vm = this;
+
+    $scope.creator = $stateParams.creator === authenticationService.getCurrentUser().uid;
 
     vm.roomID = $stateParams.roomID;
 
