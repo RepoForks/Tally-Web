@@ -17,6 +17,39 @@ body {
   outline: none;
 }
 
+canvas.chart.chart-pie {
+  width: 100% !important;
+  max-width: 600px;
+  height: auto !important;
+}
+
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.open-form-modal {
+  padding: 20px;
+}
+
+.open-form-modal p {
+  font-size: 22px;
+}
+
 #wrapper {
     padding-left: 0;
     display:block;
@@ -70,6 +103,7 @@ body {
 
 .card {
   margin: 20px 0;
+  background-color: white;
   overflow: hidden;;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);

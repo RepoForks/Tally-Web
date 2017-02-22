@@ -7,10 +7,18 @@
         </div>
 
 
-        <canvas ng-show="chartOptions[vm.polls[vm.pollNum].$id].type === 'bar' "id="vm.polls[vm.pollNum].$id" class="chart chart-bar" chart-data="responses[vm.polls[vm.pollNum].$id]" chart-labels="vm.polls[vm.pollNum].choices" chart-options="chartOptions[vm.polls[vm.pollNum].$id]"></canvas>
-        <canvas ng-show="chartOptions[vm.polls[vm.pollNum].$id].type === 'pie' "id="vm.polls[vm.pollNum].$id" class="chart chart-bar" chart-data="responses[vm.polls[vm.pollNum].$id]" chart-labels="vm.polls[vm.pollNum].choices"></canvas>
-        <canvas ng-show="chartOptions[vm.polls[vm.pollNum].$id].type === 'polar-area' "id="vm.polls[vm.pollNum].$id" class="chart chart-bar" chart-data="responses[vm.polls[vm.pollNum].$id]" chart-labels="vm.polls[vm.pollNum].choices"></canvas>
+        <canvas ng-show="chartOptions[vm.polls[vm.pollNum].$id].type === 'bar' "id="vm.polls[vm.pollNum].$id" class="chart chart-bar center-block" chart-data="responses[vm.polls[vm.pollNum].$id]" chart-labels="vm.polls[vm.pollNum].choices" chart-options="chartOptions[vm.polls[vm.pollNum].$id]" chart-series="vm.polls[vm.pollNum].choices"></canvas>
+        <canvas ng-show="chartOptions[vm.polls[vm.pollNum].$id].type === 'pie' " chart-legend="true" id="vm.polls[vm.pollNum].$id" class="chart chart-pie center-block" chart-data="responses[vm.polls[vm.pollNum].$id]" chart-labels="vm.polls[vm.pollNum].choices"></canvas>
 
+        <div class="" ng-show="chartOptions[vm.polls[vm.pollNum].$id].type === 'form'">
+          <div class="row">
+            <div class="col-sm-6" ng-repeat="sp in responses[vm.polls[vm.pollNum].$id] track by $index">
+              <div class="card card-padding" ng-click="vm.showFormDialog(sp)">
+                <p class="card-text">{{sp}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <a a ng-click="vm.previousPoll()" ui-sref="presentation.poll({ presID: vm.presKey, pollNum: vm.pollNum})"><button ng-show="vm.pollNum > 0" id="prev">Previous Poll</button></a>
         <a ng-click="vm.nextPoll()" ui-sref="presentation.poll({ presID: vm.presKey, pollNum: vm.pollNum})"><button ng-show="vm.pollNum < vm.polls.length -1" id="next">Next Poll</button></a>

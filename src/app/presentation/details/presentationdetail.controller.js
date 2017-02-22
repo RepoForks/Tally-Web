@@ -5,7 +5,7 @@
   .module('tally')
   .controller('PresentationDetailController', PresentationDetailController);
 
-  function PresentationDetailController($scope, $stateParams, $firebaseObject, $firebaseArray, firebaseService, ChartService) {
+  function PresentationDetailController($scope, $stateParams, $uibModal, $firebaseObject, $firebaseArray, firebaseService, ChartService) {
     var vm = this;
 
     // <presentation>
@@ -30,17 +30,24 @@
       vm.polls.$loaded(snap => {
 
         vm.polls.forEach(poll => {
+          createPoll(poll);
           // $scope.chartOptions[poll.$id] = createOptions(poll);
-          $scope.chartOptions[poll.$id] = ChartService.createBar(poll);
 
-          firebaseService.getPollResponsesRef().child('/' + poll.$id).on('value', function(child) {
-            $scope.responses[poll.$id] = child.val();
-            $scope.chartOptions[poll.$id].series[0].data = child.val();
+          // $scope.chartOptions[poll.$id] = createPoll(poll);
 
-            if(!$scope.$$phase) {
-              $scope.$digest();
-            }
-          });
+          // firebaseService.getPollResponsesRef().child('/' + poll.$id).on('value', function(child) {
+          //   $scope.responses[poll.$id] = child.val();
+          //
+          //   if(poll.chartType != 'Open') {
+          //     $scope.chartOptions[poll.$id].series[0].data = child.val();
+          //   } else {
+          //
+          //   }
+          //
+          //   if(!$scope.$$phase) {
+          //     $scope.$digest();
+          //   }
+          // });
         });
 
       });
@@ -62,16 +69,24 @@
 
       switch(poll.chartType) {
 
-        case 'BAR':
+        case 'Bar':
+          handleBarChart(poll);
           break;
 
-        case 'PIE':
+        case 'Pie':
+          handlePieChart(poll);
           break;
 
-        case 'WORD_CLOUD':
+        case 'Scales':
+          handleScales(poll);
           break;
 
-        case 'RANK':
+        case 'Rank':
+          handleRank(poll);
+          break;
+
+        case 'Form':
+          handleForm(poll);
           break;
 
         default:
@@ -81,33 +96,59 @@
 
     }
 
-    function createOptions(poll) {
-      return {
-        chart: {
-          animation: {
-            "duration": 10
-          },
-          defaultSeriesType: 'column'
-        },
-        title: {
-          text: poll.question
-        },
-        xAxis: {
-          categories: poll.choices
-        },
-        yAxis: {
-          title: {
-            text: "Test"
-          }
-        },
-        series: [{
-          name: 'Random data',
-          animation: {
-            duration: 2000
-          },
-          data: []
-        }]
+    function handleForm(poll) {
+      $scope.chartOptions[poll.$id] = ChartService.createOpenForm(poll);
+
+      firebaseService.getPollResponsesRef().child('/' + poll.$id).on('value', function(child) {
+        $scope.responses[poll.$id] = child.val();
+        digest();
+      });
+    }
+
+    function handlePieChart(poll) {
+      $scope.chartOptions[poll.$id] = ChartService.createPie(poll);
+
+      firebaseService.getPollResponsesRef().child('/' + poll.$id).on('value', function(child) {
+        $scope.responses[poll.$id] = child.val();
+        $scope.chartOptions[poll.$id].series[0].data = child.val();
+        digest();
+      });
+    }
+
+    function handleBarChart(poll) {
+      $scope.chartOptions[poll.$id] = ChartService.createBar(poll);
+
+      firebaseService.getPollResponsesRef().child('/' + poll.$id).on('value', function(child) {
+        $scope.responses[poll.$id] = child.val();
+        digest();
+      });
+    }
+
+    function handleRank(poll) {
+
+    }
+
+    function handleScales(poll) {
+
+    }
+
+    function digest() {
+      if(!$scope.$$phase) {
+        $scope.$digest();
       }
+    }
+
+    vm.showFormDialog = function(text) {
+      var modalInstance = $uibModal.open({
+         animation: true,
+         templateUrl: 'app/presentation/details/openFormModal.html',
+         controller: function() {
+           var vm = this;
+           vm.text = text;
+         },
+         controllerAs: 'vm',
+         size: 'lg'
+      });
     }
 
     retrievePresentation();

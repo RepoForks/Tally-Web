@@ -19,6 +19,19 @@
       return options;
     }
 
+    this.createRank = function(poll) {
+
+    }
+
+    this.createScale = function(poll) {
+
+    }
+
+    this.createOpenForm = function(poll) {
+      var options = {type: 'form'};
+      return options;
+    }
+
     function getCommonOptions(poll) {
       return {
         animation: false,
@@ -34,10 +47,10 @@
             }
           }]
         },
-        labels: poll.answers,
+        labels: poll.choices,
         series: [{
           name: 'Answers',
-          data: []
+          data: poll.choices
         }]
       }
     }
