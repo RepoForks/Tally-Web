@@ -69,7 +69,8 @@
           name: $scope.name,
           code: $scope.code,
           creator: userID,
-          dateCreated: Date.now()
+          dateCreated: Date.now(),
+          dateLastModified: Date.now()
         };
 
         vm.createdRoom.studentList = handleStudentList();
