@@ -48,20 +48,20 @@
 
     function signInWithEmailAndPassword(email, password) {
       //auth.$signInWithEmailAndPassword(email, password);
-      return auth.$signInWithEmailAndPassword(email, password).then(snap => {
+      return auth.$signInWithEmailAndPassword(email, password).then(function(snap) {
         return snap;
-      }).catch(error => {
+      }).catch(function(error) {
         return error;
       })
     }
 
     function registerWithEmailAndPassword(email, password) {
       return auth.$createUserWithEmailAndPassword(email, password)
-        .then(child => {
+        .then(function(child) {
           UserSerivce.createUserEntry(child);
           return child;
         })
-        .catch(err => {
+        .catch(function(err) {
           console.log(err);
           return err;
         })

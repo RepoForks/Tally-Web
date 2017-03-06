@@ -13,15 +13,23 @@
     $scope.email = "";
     $scope.password = "";
 
+    vm.onSubmit = function() {
+      if(vm.type === 'login') {
+        vm.login();
+      } else {
+        vm.register();
+      }
+    }
+
     vm.login = function() {
-      authenticationService.signInWithEmailAndPassword($scope.email, $scope.password).then(s => {
+      authenticationService.signInWithEmailAndPassword($scope.email, $scope.password).then(function(s) {
         console.log(s);
         handleAuthSubmission(s);
       });
     }
 
     vm.register = function() {
-      authenticationService.registerWithEmailAndPassword($scope.email, $scope.password).then(s => {
+      authenticationService.registerWithEmailAndPassword($scope.email, $scope.password).then(function(s) {
         handleAuthSubmission(s);
       });
     }
@@ -35,11 +43,11 @@
         // success: redirect
         $state.go('room.list', {userID: val.uid});
       } else {
-        console.log(s.message);
+        console.log(val.message);
       }
     }
 
   }
 
 
-}())
+})();

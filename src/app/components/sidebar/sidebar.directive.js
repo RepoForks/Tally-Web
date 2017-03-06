@@ -21,7 +21,11 @@
     var vm = this;
 
     vm.getUserID = function() {
-      return authenticationService.getCurrentUser().uid;
+      if(vm.loggedIn()) {
+        return authenticationService.getCurrentUser().uid;
+      }
+
+      return null;
     }
 
     vm.loggedIn = function() {
@@ -29,4 +33,4 @@
     }
   }
 
-}());
+})();

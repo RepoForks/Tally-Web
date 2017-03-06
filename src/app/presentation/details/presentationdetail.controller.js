@@ -27,9 +27,9 @@
 
       vm.polls = $firebaseArray(firebaseService.getPollRef().child('/' + vm.presKey));
 
-      vm.polls.$loaded(snap => {
+      vm.polls.$loaded(function(snap) {
 
-        vm.polls.forEach(poll => {
+        vm.polls.forEach(function(poll) {
           createPoll(poll);
           // $scope.chartOptions[poll.$id] = createOptions(poll);
 
@@ -101,6 +101,8 @@
 
       firebaseService.getPollResponsesRef().child('/' + poll.$id).on('value', function(child) {
         $scope.responses[poll.$id] = child.val();
+        console.log(child.val());
+        //ProfanityChecker.checkText(child.val());
         digest();
       });
     }

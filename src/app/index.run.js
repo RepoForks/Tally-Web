@@ -16,7 +16,7 @@
       authenticationService.setCurrentUser(authData);
 
       if(authData == null) {
-        $state.go('home');
+        $state.go('login');
       }
 
     });

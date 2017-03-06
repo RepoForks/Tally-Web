@@ -53,8 +53,8 @@
 
     vm.enroll = function(moduleCode) {
       // check if module code exists within room entries
-      firebaseService.getRoomRef().once('value', snapshot => {
-        snapshot.forEach(entry => {
+      firebaseService.getRoomRef().once('value', function(snapshot) {
+        snapshot.forEach(function(entry) {
           if(entry.hasChild('code')) {
             if(entry.val().code === moduleCode) {
               var ref = firebaseService.getUserRoomRef().child(authenticationService.getCurrentUser().uid).child('/' + entry.key)
