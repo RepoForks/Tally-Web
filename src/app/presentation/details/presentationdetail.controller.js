@@ -18,6 +18,10 @@
     $scope.responses = {};
     $scope.chartOptions = {};
 
+    $scope.roomName = $stateParams.roomName;
+    $scope.roomID = $stateParams.roomID;
+    console.log($scope.roomName);
+
     vm.presKey = $stateParams.presID;
     vm.pollNum = $stateParams.pollNum;
 

@@ -18,7 +18,7 @@
     var pollsResponsesRefStr = 'poll-responses';
     var pollPresentationRefStr = 'poll-rooms';
     var profanityRefStr = 'profanity';
-    var chatRefStr = "chat"
+    var chatRefStr = "chats"
 
     var rootRef = firebase.database();
 
@@ -32,7 +32,7 @@
     this.getPollPresentationRef = getPollPresentationRef;
     this.getPollResponsesRef = getPollResponsesRef;
     this.getProfanityRef = getProfanityRef;
-    this.chatRef = getChatRef;
+    this.getChatRef = getChatRef;
 
     function getUserRef() {
       return rootRef.ref(usersRefStr);

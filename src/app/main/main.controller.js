@@ -9,9 +9,11 @@
   function MainController($state, authenticationService, $timeout, toastr, firebaseService) {
     var vm = this;
 
-    if(authenticationService.getCurrentUser() != null) {
-      $state.go('room.list', {userID: authenticationService.getCurrentUser().uid});
-    }
+    // if(authenticationService.getCurrentUser() != null) {
+    //   $state.go('room.list', {userID: authenticationService.getCurrentUser().uid});
+    // }
+
+    $state.go('room.list', {userID: authenticationService.getCurrentUser().uid});
 
     vm.awesomeThings = [];
     vm.classAnimation = '';

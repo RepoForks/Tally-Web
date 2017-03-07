@@ -32,8 +32,8 @@
       vm.enrolledRooms = $firebaseArray(firebaseService.getUserRoomRef().child('/' + vm.userID));
     }
 
-    vm.navigateToRoom = function(id, creatorID) {
-      $state.go('room.detail', { roomID: id, creator: creatorID });
+    vm.navigateToRoom = function(id, creatorID, roomName) {
+      $state.go('room.detail', { roomID: id, creator: creatorID, roomName: roomName});
     }
 
     vm.navigateToCreation = function() {

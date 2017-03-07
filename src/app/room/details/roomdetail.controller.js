@@ -12,6 +12,10 @@
     $scope.creator = $stateParams.creator === authenticationService.getCurrentUser().uid;
 
     vm.roomID = $stateParams.roomID;
+    $scope.roomID = vm.roomID;
+    
+    $scope.roomName = $stateParams.roomName;
+    console.log($scope.roomName);
 
     vm.presentations = [];
 
@@ -26,7 +30,7 @@
     }
 
     vm.navigateToPresentation = function(pres) {
-      $state.go('presentation.poll', { presID: pres.$id, pollNum: 0 });
+      $state.go('presentation.poll', { presID: pres.$id, pollNum: 0, roomName: $scope.roomName, roomID: vm.roomID });
     }
 
     getPresentations();

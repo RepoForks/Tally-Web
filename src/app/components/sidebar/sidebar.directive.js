@@ -8,6 +8,8 @@
   function sidebar() {
     var directive = {
       restrict: 'E',
+      replace: true,
+      scope: true,
       templateUrl: 'app/components/sidebar/sidebar.html',
       controller: SidebarController,
       controllerAs: 'vm',

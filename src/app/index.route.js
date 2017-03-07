@@ -35,7 +35,7 @@
         controller: function($state, authenticationService) {
 			       authenticationService.logout();
              $state.go('home');
-		    }
+           }
 
       })
 
@@ -81,7 +81,9 @@
         controllerAs: 'vm',
         authenticate: true,
         params: {
-          creator: -1
+          creator: -1,
+          roomName: null,
+          roomID: null
         }
       })
 
@@ -90,7 +92,11 @@
         templateUrl: 'app/presentation/details/presentationDetail.html',
         controller: 'PresentationDetailController',
         controllerAs: 'vm',
-        authenticate: true
+        authenticate: true,
+        params: {
+          roomName: null,
+          roomID: null
+        }
       })
 
       .state('room.presentationcreate', {
@@ -145,8 +151,9 @@
         authenticate: true,
         params: {
           presID: null,
-          pollNum: null
-        },
+          pollNum: null,
+          roomName: null
+        }
       })
 
     $urlRouterProvider.otherwise('/');

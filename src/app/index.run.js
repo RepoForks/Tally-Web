@@ -21,6 +21,13 @@
 
     });
 
+    $rootScope.$on("$locationChangeStart", function(event, next, current) {
+      if(next == current) {
+        event.preventDefault();
+        $state.go('home');
+      }
+    });
+
     // $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
     //   if (toState.authenticate && $rootScope.authData == null){
     //     console.log($rootScope.authData);

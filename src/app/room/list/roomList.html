@@ -45,7 +45,7 @@
           </thead>
 
           <tbody>
-            <tr ng-repeat="room in vm.createdRooms" ng-click="vm.navigateToRoom(room.id, room.creator)">
+            <tr ng-repeat="room in vm.createdRooms" ng-click="vm.navigateToRoom(room.id, room.creator, room.name)">
               <th>{{room.name}}</th>
               <th>{{room.code}}</th>
               <th>{{room.dateCreated | date: 'dd-MM-yyyy'}}</th>
@@ -57,7 +57,7 @@
               </th>
             </tr>
 
-            <tr ng-repeat="room in vm.enrolledRooms" ng-click="vm.navigateToRoom(room.id, room.creator)">
+            <tr ng-repeat="room in vm.enrolledRooms" ng-click="vm.navigateToRoom(room.id, room.creator, room.name)">
               <th>{{room.name}}</th>
               <th>{{room.code}}</th>
               <th>{{room.dateCreated | date: 'dd-MM-yyyy'}}</th>
