@@ -6,7 +6,7 @@
     .controller('RoomCreateController', RoomCreateController);
 
   /** @ngInject */
-  function RoomCreateController($scope, $stateParams, firebaseService, $firebaseArray, authenticationService) {
+  function RoomCreateController($scope, $state, $stateParams, firebaseService, $firebaseArray, authenticationService) {
     var vm = this;
 
     $scope.creation = $stateParams.roomID === undefined;
@@ -47,6 +47,9 @@
       if(vm.updatedRoom.studentList != null) {
         enrollUsersInRoom(vm.updatedRoom);
       }
+
+      $state.go('room.detail', {creator: vm.updatedRoom.creator, roomName: vm.updatedRoom.name, roomID: vm.updatedRoom.id});
+
     }
 
     function handleStudentList() {
@@ -86,6 +89,8 @@
         if(vm.createdRoom.studentList != null) {
           enrollUsersInRoom(vm.createdRoom);
         }
+
+        $state.go('room.detail', {creator: vm.createdRoom.creator, roomName: vm.createdRoom.name, roomID: vm.createdRoom.id});
 
     }
 
