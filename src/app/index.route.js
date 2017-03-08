@@ -177,6 +177,7 @@
       .state('chat.details', {
         url: '/:userID/list',
         templateUrl: 'app/chat/detail/chatDetail.html',
+        controller: 'ChatDetailController',
         controllerAs: 'vm',
         authenticate: true,
         params: {
