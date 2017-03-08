@@ -152,7 +152,8 @@
         params: {
           presID: null,
           pollNum: null,
-          roomName: null
+          roomName: null,
+          roomID: null
         }
       })
 
