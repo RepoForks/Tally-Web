@@ -28,6 +28,8 @@
     $scope.max = false;
     $scope.boxClass = "chatbox-wrapper";
 
+    $scope.visible = false;
+
     $scope.messages = $firebaseArray(firebaseService.getChatRef().child('/' + vm.room));
 
     vm.toggleMax = function() {
@@ -38,6 +40,14 @@
       } else {
         $scope.boxClass = "chatbox-wrapper";
       }
+    }
+
+    vm.close = function() {
+      $scope.visible = false;
+    }
+
+    vm.open = function() {
+      $scope.visible = true;
     }
 
     vm.send = function() {

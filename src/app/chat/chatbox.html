@@ -1,27 +1,39 @@
-<div ng-class="boxClass">
-  <div class="row">
-    <div class="col-sm-12">
-      <span ng-click="vm.toggleMax()"><i class="fa fa-window-maximize"></i></span>
-      <h4>{{vm.title}} Real-Time Chat</h4>
+<div>
+  <div class="chatbox-wrapper" ng-class="visible ? 'active' : 'hidden'">
+    <div class="row">
+      <div class="col-sm-12">
+        <span ng-click="vm.close()"><i class="fa fa-close"></i></span>
+        <h4>{{vm.title}} Real-Time Chat</h4>
+      </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col-sm-12">
-      <ul class="chatbox-list">
-        <li ng-repeat="msg in messages | reverse"><p class="chat-message">{{msg.message}}</p><time time="msg.date"></time></li>
-      </ul>
+    <div class="row">
+      <div class="col-sm-12">
+        <ul class="chatbox-list">
+          <li ng-repeat="msg in messages | reverse"><p class="chat-message">{{msg.message}}</p><time time="msg.date"></time></li>
+        </ul>
+      </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col-sm-12">
-      <form class="chatbox-form" ng-submit="vm.send()">
+    <div class="row">
+      <div class="col-sm-12">
+        <form class="chatbox-form" ng-submit="vm.send()">
           <input type="text" name="msg" id="mgg" ng-model="usrMsg" placeholder="Type a message" required />
           <button type="submit" class="btn btn-primary">Send</button>
         </div>
-        <!-- <input type="text" ng-model="usrMsg"/>
       </form>
     </div>
   </div>
+
+
+  <div ng-class="visible ? 'hidden' : 'active'">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="fab" ng-click="vm.open()">
+          <a><i class="fa fa-comment"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
