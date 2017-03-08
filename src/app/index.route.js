@@ -157,6 +157,33 @@
         }
       })
 
+      .state('chat', {
+        url: '/chat',
+        templateUrl: 'app/chat/chat.html',
+        authenticate: true
+      })
+
+      .state('chat.list', {
+        url: '/:userID/list',
+        templateUrl: 'app/chat/list/chatList.html',
+        controller: 'ChatListController',
+        controllerAs: 'vm',
+        authenticate: true,
+        params: {
+          userID: null
+        }
+      })
+
+      .state('chat.details', {
+        url: '/:userID/list',
+        templateUrl: 'app/chat/detail/chatDetail.html',
+        controllerAs: 'vm',
+        authenticate: true,
+        params: {
+          chatID: null
+        }
+      })
+
     $urlRouterProvider.otherwise('/');
   }
 

@@ -84,7 +84,7 @@
         vm.roomKey = firebaseService.getRoomRef().push(vm.createdRoom).key;
         vm.createdRoom.id = vm.roomKey;
         firebaseService.getUserCreatedRoomRef().child('/' + userID).child('/' + vm.roomKey).set(vm.createdRoom);
-        firebaseService.getChatRef().child('/' + vm.roomKey).push({dateCreated: vm.createdRoom.dateCreated, message: "Live chat has now been opened for " + vm.createdRoom.name});
+        firebaseService.getChatRef().child('/' + vm.roomKey).push({date: vm.createdRoom.dateCreated, message: "Live chat has now been opened for " + vm.createdRoom.name});
 
         if(vm.createdRoom.studentList != null) {
           enrollUsersInRoom(vm.createdRoom);
