@@ -53,6 +53,7 @@
     vm.send = function() {
       if($scope.usrMsg !== "") {
         sendMessage();
+        $scope.usrMsg = "";
       }
     }
 

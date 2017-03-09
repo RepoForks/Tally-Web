@@ -174,14 +174,15 @@
         }
       })
 
-      .state('chat.details', {
-        url: '/:userID/list',
+      .state('chat.detail', {
+        url: '/:moduleID',
         templateUrl: 'app/chat/detail/chatDetail.html',
         controller: 'ChatDetailController',
         controllerAs: 'vm',
         authenticate: true,
         params: {
-          chatID: null
+          moduleID: null,
+          moduleName: null
         }
       })
 

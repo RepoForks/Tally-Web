@@ -196,6 +196,31 @@ ul li a i {
   margin: 10px 0;
 }
 
+.chat-wrapper {
+
+}
+
+.chat-wrapper .chat-list {
+
+}
+
+.chat-list .chat-list-item {
+  margin: 20px 0;
+  background-color: white;
+  overflow: hidden;;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.chat-list-item p {
+
+}
+
+.chat-list-item time {
+  float: left;
+}
+
 @media(min-width:768px) {
     #wrapper {
         padding-left: 100px;

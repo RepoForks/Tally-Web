@@ -5,7 +5,7 @@
     .module('tally')
     .controller('ChatListController', ChatListController);
 
-  function ChatListController($scope, $stateParams, authenticationService, firebaseService, $firebaseArray) {
+  function ChatListController($scope, $state, $stateParams, authenticationService, firebaseService, $firebaseArray) {
     var vm = this;
 
     vm.userID = $stateParams.userID;
@@ -36,8 +36,9 @@
       });
     });
 
-    vm.navigateToChat = function(roomID) {
+    vm.navigateToChat = function(roomID, roomName) {
       console.log(roomID);
+      $state.go('chat.detail', {moduleID: roomID, moduleName: roomName});
     }
 
     function digest() {

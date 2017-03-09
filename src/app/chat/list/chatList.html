@@ -25,12 +25,12 @@
           </thead>
 
           <tbody>
-            <tr ng-repeat="mod in vm.enrolledRooms track by $index" ng-click="vm.navigateToChat(mod.id)">
+            <tr ng-repeat="mod in vm.enrolledRooms track by $index" ng-click="vm.navigateToChat(mod.id, mod.name)">
               <th>{{mod.name}}</th>
               <th>{{mod.code}}</th>
             </tr>
 
-            <tr ng-repeat="mod in vm.createdRooms track by $index" ng-click="vm.navigateToChat(mod.id)">
+            <tr ng-repeat="mod in vm.createdRooms track by $index" ng-click="vm.navigateToChat(mod.id, mod.name)">
               <th>{{mod.name}}</th>
               <th>{{mod.code}}</th>
             </tr>
