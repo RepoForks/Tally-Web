@@ -5,7 +5,7 @@
   .module('tally')
   .controller('PresentationDetailController', PresentationDetailController);
 
-  function PresentationDetailController($scope, $stateParams, $uibModal, $firebaseObject, $firebaseArray, firebaseService, ChartService) {
+  function PresentationDetailController($scope, $stateParams, $uibModal, $firebaseObject, $firebaseArray, firebaseService, ChartService, profanityService) {
     var vm = this;
 
     // <presentation>
@@ -106,8 +106,8 @@
 
       firebaseService.getPollResponsesRef().child('/' + poll.$id).on('value', function(child) {
         $scope.responses[poll.$id] = child.val();
-        console.log(child.val());
-        //ProfanityChecker.checkText(child.val());
+        $scope.responses[poll.$id] = profanityService.check($scope.responses[poll.$id]);
+        //console.log(profanityService.check($scope.responses[poll.$id]));
         digest();
       });
     }
