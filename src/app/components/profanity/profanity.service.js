@@ -79,7 +79,7 @@
       var tokens = [];
 
       if(typeof text == 'string' || text instanceof String) {
-        tokens = findProfanity(this, text.split(regex));
+        tokens = findProfanity(this, text.split(regex)).join("");
       }
 
       if(typeof text == 'object' || text instanceof Object) {

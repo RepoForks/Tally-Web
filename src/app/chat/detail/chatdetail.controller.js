@@ -5,7 +5,7 @@
     .module('tally')
     .controller('ChatDetailController', ChatDetailController);
 
-  function ChatDetailController($scope, $stateParams, firebaseService, $firebaseArray, $uibModal) {
+  function ChatDetailController($scope, $stateParams, firebaseService, $firebaseArray, $uibModal, profanityService) {
     var vm = this;
 
     vm.moduleID = $stateParams.moduleID;
@@ -33,10 +33,11 @@
 
     vm.send = function() {
       if($scope.usrMsg != "") {
-        $scope.messages.push({date: Date.now(), message: $scope.usrMsg});
+        console.log($scope.messages);
+        $scope.messages.$add({date: Date.now(), message: profanityService.check($scope.usrMsg)});
         $scope.usrMsg = "";
       }
     }
-    
+
   }
 })();

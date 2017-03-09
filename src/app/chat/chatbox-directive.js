@@ -22,7 +22,7 @@
     return directive;
   }
 
-  function ChatboxController($scope, firebaseService, $firebaseArray) {
+  function ChatboxController($scope, firebaseService, $firebaseArray, profanityService) {
     var vm = this;
 
     $scope.max = false;
@@ -59,11 +59,12 @@
 
     function sendMessage() {
       var msg = {
-        message: $scope.usrMsg,
+        message: profanityService.check($scope.usrMsg),
         date: Date.now()
       };
 
-      firebaseService.getChatRef().child('/' + vm.room).push(msg);
+      $scope.messages.$add(msg);
+      // firebaseService.getChatRef().child('/' + vm.room).push(msg);
     }
   }
 
