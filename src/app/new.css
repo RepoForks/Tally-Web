@@ -50,6 +50,16 @@ canvas.chart.chart-pie {
   font-size: 22px;
 }
 
+.chat-form {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+}
+
+.chat-form input {
+  width: 70vw;
+}
+
 #wrapper {
     padding-left: 0;
     display:block;

@@ -22,5 +22,14 @@
       </div>
     </div>
 
+    <div class="row">
+      <div class="col-sm-12">
+        <form class="chat-form" ng-submit="vm.send()">
+          <input type="text" name="msg" id="mgg" ng-model="usrMsg" placeholder="Type a message" required />
+          <button type="submit" class="btn btn-primary">Send</button>
+        </div>
+      </form>
+    </div>
+
   </div>
 </section>

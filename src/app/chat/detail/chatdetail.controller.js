@@ -30,5 +30,13 @@
          size: 'lg'
       });
     }
+
+    vm.send = function() {
+      if($scope.usrMsg != "") {
+        $scope.messages.push({date: Date.now(), message: $scope.usrMsg});
+        $scope.usrMsg = "";
+      }
+    }
+    
   }
 })();
