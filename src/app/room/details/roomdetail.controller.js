@@ -30,8 +30,14 @@
     }
 
     vm.navigateToPresentation = function(pres) {
-      console.log(vm.roomID);
-      $state.go('presentation.poll', { presID: pres.$id, pollNum: 0, roomName: $scope.roomName, roomID: vm.roomID });
+      if($scope.creator) {
+        console.log("Creator navigate");
+        $state.go('presentation.poll', { presID: pres.$id, pollNum: 0, roomName: $scope.roomName, roomID: vm.roomID });
+      } else {
+        console.log("Joe Navigate");
+        $state.go('presentation.respond', { presID: pres.$id, pollNum: 0, roomName: $scope.roomName, roomID: vm.roomID});
+      }
+
     }
 
     getPresentations();

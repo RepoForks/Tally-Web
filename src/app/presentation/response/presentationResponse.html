@@ -1,0 +1,58 @@
+<section class="container-wrapper presentation-container">
+  <div class="container">
+    <chatbox title="{{vm.roomName}}" room="{{vm.roomID}}"></chatbox>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="poll-question">
+          <h2 class="text-center">{{vm.polls[vm.pollNum].question}}</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="" ng-show="vm.polls[vm.pollNum].questionType == 'Multiple Choice'">
+      <div class="row">
+        <div class="col-sm-6" ng-repeat="choice in vm.polls[vm.pollNum].choices track by $index">
+          <div ng-click="vm.submitResponse(choice, $index)" class="card card-padding response-card">
+            <p class="card-text">{{choice}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div ng-show="vm.polls[vm.pollNum].questionType == 'Open'">
+      <div class="row">
+        <div class="col-sm-12">
+          <ul class="chatbox-list">
+            <li ng-click="vm.showDialog(msg)" class="card" ng-repeat="msg in vm.responses[vm.polls[vm.pollNum].$id] track by $index">
+              <p class="chat-message open-msg">{{msg}}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <form class="chat-form" ng-submit="vm.send()">
+            <input type="text" name="msg" id="mgg" ng-model="usrMsg" placeholder="Type a message" required />
+            <button type="submit" class="btn btn-primary">Send</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div ng-show="vm.pollNum > 0" ng-click="vm.previousPoll()" ui-sref="presentation.respond({ presID: vm.presID, pollNum: vm.pollNum})" class="prev-next-button previous">
+      <svg viewbox="0 0 100 100">
+        <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform="translate(15,0)">
+      </svg>
+    </div>
+
+
+    <div ng-show="vm.pollNum < vm.polls.length -1" ng-click="vm.nextPoll()" ui-sref="presentation.respond({ presID: vm.presID, pollNum: vm.pollNum})" class="prev-next-button next">
+      <svg viewbox="0 0 100 100">
+        <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z "transform="translate(85,100) rotate(180) ">
+      </svg>
+    </div>
+
+      </div>
+    </div>
+  </section>

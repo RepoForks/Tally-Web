@@ -231,6 +231,66 @@ ul li a i {
   float: left;
 }
 
+.circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 30px;
+  display: inline-block;
+  background-color: #FF5722;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.circle:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.circle a {
+  color: white;
+  font-size: 1.5em;
+  margin: auto;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.open-msg {
+  float: left;
+}
+
+.prev-next-button {
+  position: fixed;
+  top: 50%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: white;
+  transform: translateY(-50%);
+}
+
+.previous { left: 135px; }
+.next { right: 10px; }
+
+.prev-next-button svg {
+  position: fixed;
+  left: 20%;
+  top: 20%;
+  width: 60%;
+  height: 60%;
+}
+
+.arrow { fill: #333; }
+
+.response-card:hover {
+  background-color: #CCCCCC !important;
+}
+
 @media(min-width:768px) {
     #wrapper {
         padding-left: 100px;

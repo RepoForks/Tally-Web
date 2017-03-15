@@ -36,7 +36,6 @@
 			       authenticationService.logout();
              $state.go('home');
            }
-
       })
 
       // empty view
@@ -147,6 +146,20 @@
         url: '/:presID/:pollNum',
         templateUrl: 'app/presentation/details/presentationDetail.html',
         controller: 'PresentationDetailController',
+        controllerAs: 'vm',
+        authenticate: true,
+        params: {
+          presID: null,
+          pollNum: null,
+          roomName: null,
+          roomID: null
+        }
+      })
+
+      .state('presentation.respond', {
+        url: '/:presID/respond/:pollNum',
+        templateUrl: 'app/presentation/response/presentationResponse.html',
+        controller: 'PresentationRespondController',
         controllerAs: 'vm',
         authenticate: true,
         params: {

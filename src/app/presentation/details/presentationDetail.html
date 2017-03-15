@@ -22,8 +22,19 @@
           </div>
         </div>
 
-        <a a ng-click="vm.previousPoll()" ui-sref="presentation.poll({ presID: vm.presKey, pollNum: vm.pollNum})"><button ng-show="vm.pollNum > 0" id="prev">Previous Poll</button></a>
-        <a ng-click="vm.nextPoll()" ui-sref="presentation.poll({ presID: vm.presKey, pollNum: vm.pollNum})"><button ng-show="vm.pollNum < vm.polls.length -1" id="next">Next Poll</button></a>
+        <div ng-show="vm.pollNum > 0" ng-click="vm.previousPoll()" ui-sref="presentation.respond({ presID: vm.presID, pollNum: vm.pollNum})" class="prev-next-button previous">
+          <svg viewbox="0 0 100 100">
+            <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform="translate(15,0)">
+          </svg>
+        </div>
+
+
+        <div ng-show="vm.pollNum < vm.polls.length -1" ng-click="vm.nextPoll()" ui-sref="presentation.respond({ presID: vm.presID, pollNum: vm.pollNum})" class="prev-next-button next">
+          <svg viewbox="0 0 100 100">
+            <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z "transform="translate(85,100) rotate(180) ">
+          </svg>
+        </div>
+
       </div>
     </div>
   </div>
