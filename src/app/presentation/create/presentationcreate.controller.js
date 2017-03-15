@@ -17,7 +17,7 @@
       questionType: '',
       choices: ['', ''],
       profanityFilter: true,
-      singleChoice: true
+      singleChoice: false
     }
 
     $scope.polls = [angular.copy(poll)];
@@ -76,9 +76,9 @@
         var pollKey = firebaseService.getPollRef().child('/' + presKey).push($scope.polls[i]).key;
 
         if($scope.polls[i].questionType == 'Open') {
-          firebaseService.getPollResponsesRef().child('/' + pollKey).push("Default Message");
+          firebaseService.getPollResponsesRef().child('/' + pollKey).child('/values').push("Default Message");
         } else {
-          firebaseService.getPollResponsesRef().child('/' + pollKey).set(new Array($scope.polls[i].choices.length).fill(0));
+          firebaseService.getPollResponsesRef().child('/' + pollKey).child('/values').set(new Array($scope.polls[i].choices.length).fill(0));
         }
        //firebaseService.getPollResponsesRef('/' + pollKey).push();
       }

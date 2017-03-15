@@ -15,6 +15,7 @@
 
     vm.responses = {};
     vm.pollResponses = {};
+    vm.submissions = {};
 
     vm.userID = authenticationService.getCurrentUser().uid;
 
@@ -40,14 +41,19 @@
 
           var pollID = vm.polls[i].$id;
           console.log(poll);
-          firebaseService.getPollResponsesRef().child('/' + poll.$id).on('value', function(child) {
+          firebaseService.getPollResponsesRef().child('/' + poll.$id).child('/values').on('value', function(child) {
             if(poll.questionType == "Open") {
-              vm.responses[poll.$id] = $firebaseArray(firebaseService.getPollResponsesRef().child('/' + poll.$id));
+              vm.responses[poll.$id] = $firebaseArray(firebaseService.getPollResponsesRef().child('/' + poll.$id).child('/values'));
             } else {
               vm.responses[poll.$id] = child.val();
             }
 
             digest();
+          });
+
+          firebaseService.getPollResponsesRef().child('/' + poll.$id).child('/submission').on('value', function(child) {
+            vm.submissions[poll.$id] = child.val();
+            console.log(vm.submissions);
           });
 
           //vm.responses[i] = $firebaseArray(firebaseService.getPollResponsesRef().child('/' + pollID));
@@ -64,9 +70,9 @@
       var poll = vm.polls[vm.pollNum];
 
       if(poll.profanityFilter) {
-        firebaseService.getPollResponsesRef().child('/' + poll.$id).push(profanityService.check($scope.usrMsg));
+        firebaseService.getPollResponsesRef().child('/' + poll.$id).child('/values').push(profanityService.check($scope.usrMsg));
       } else {
-        firebaseService.getPollResponsesRef().child('/' + poll.$id).push($scope.usrMsg);
+        firebaseService.getPollResponsesRef().child('/' + poll.$id).child('/values').push($scope.usrMsg);
       }
 
 
@@ -122,6 +128,7 @@
     function submit(pollID, index) {
       firebaseService.getPollResponsesRef()
         .child('/' + pollID)
+        .child('/values')
         .child('/' + String(index))
         .transaction(function(currentValue) {
           return (currentValue || 0) + 1;

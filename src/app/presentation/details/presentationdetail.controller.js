@@ -34,23 +34,6 @@
 
         vm.polls.forEach(function(poll) {
           createPoll(poll);
-          // $scope.chartOptions[poll.$id] = createOptions(poll);
-
-          // $scope.chartOptions[poll.$id] = createPoll(poll);
-
-          // firebaseService.getPollResponsesRef().child('/' + poll.$id).on('value', function(child) {
-          //   $scope.responses[poll.$id] = child.val();
-          //
-          //   if(poll.chartType != 'Open') {
-          //     $scope.chartOptions[poll.$id].series[0].data = child.val();
-          //   } else {
-          //
-          //   }
-          //
-          //   if(!$scope.$$phase) {
-          //     $scope.$digest();
-          //   }
-          // });
         });
 
       });
@@ -102,9 +85,12 @@
     function handleForm(poll) {
       $scope.chartOptions[poll.$id] = ChartService.createOpenForm(poll);
 
-      firebaseService.getPollResponsesRef().child('/' + poll.$id).on('value', function(child) {
+      firebaseService.getPollResponsesRef().child('/' + poll.$id).child('/values').on('value', function(child) {
         $scope.responses[poll.$id] = child.val();
-        $scope.responses[poll.$id] = profanityService.check($scope.responses[poll.$id]);
+
+        if(poll.profanityFilter) {  
+          $scope.responses[poll.$id] = profanityService.check($scope.responses[poll.$id]);
+        }
         //console.log(profanityService.check($scope.responses[poll.$id]));
         digest();
       });
@@ -113,9 +99,14 @@
     function handlePieChart(poll) {
       $scope.chartOptions[poll.$id] = ChartService.createPie(poll);
 
-      firebaseService.getPollResponsesRef().child('/' + poll.$id).on('value', function(child) {
-        $scope.responses[poll.$id] = child.val();
-        $scope.chartOptions[poll.$id].series[0].data = child.val();
+      firebaseService.getPollResponsesRef().child('/' + poll.$id).child('/values').on('value', function(child) {
+          $scope.responses[poll.$id] = child.val();
+          $scope.chartOptions[poll.$id].series[0].data = child.val();
+          // delete $scope.responses[poll.$id].submission;
+          // delete $scope.chartOptions[poll.$id].series[0].data.submission;
+          console.log($scope.responses[poll.$id]);
+          console.log($scope.chartOptions[poll.$id]);
+
         digest();
       });
     }
@@ -123,9 +114,12 @@
     function handleBarChart(poll) {
       $scope.chartOptions[poll.$id] = ChartService.createBar(poll);
 
-      firebaseService.getPollResponsesRef().child('/' + poll.$id).on('value', function(child) {
+      firebaseService.getPollResponsesRef().child('/' + poll.$id).child('/values').on('value', function(child) {
         $scope.responses[poll.$id] = child.val();
-        digest();
+          // $scope.responses[poll.$id] = child.val();
+          // delete $scope.responses[poll.$id].submission;
+          console.log($scope.responses[poll.$id]);
+          digest();
       });
     }
 

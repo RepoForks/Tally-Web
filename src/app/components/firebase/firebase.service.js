@@ -16,6 +16,7 @@
     var presentationRoomRefStr = 'presentation-rooms';
     var pollsRefStr = 'polls';
     var pollsResponsesRefStr = 'poll-responses';
+    var pollResponsesValRefStr = 'values';
     var pollPresentationRefStr = 'poll-rooms';
     var profanityRefStr = 'profanity';
     var chatRefStr = "chats"
@@ -31,6 +32,7 @@
     this.getPollRef = getPollRef;
     this.getPollPresentationRef = getPollPresentationRef;
     this.getPollResponsesRef = getPollResponsesRef;
+    this.getPollResponsesValRef = getPollResponsesValRef;
     this.getProfanityRef = getProfanityRef;
     this.getChatRef = getChatRef;
 
@@ -64,6 +66,10 @@
 
     function getPollPresentationRef() {
       return rootRef.ref(pollPresentationRefStr);
+    }
+
+    function getPollResponsesValRef() {
+      return getPollResponsesRef().ref(pollResponsesValRefStr);
     }
 
     function getPollResponsesRef() {
