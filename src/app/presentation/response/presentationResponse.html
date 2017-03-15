@@ -12,7 +12,8 @@
     <div class="" ng-show="vm.polls[vm.pollNum].questionType == 'Multiple Choice'">
       <div class="row">
         <div class="col-sm-6" ng-repeat="choice in vm.polls[vm.pollNum].choices track by $index">
-          <div ng-click="vm.submitResponse(choice, $index)" class="card card-padding response-card">
+          {{}}
+          <div ng-click="vm.submitResponse(choice, $index)" ng-class="{responded: vm.polls[vm.pollNum].singleChoice && $index == vm.responses[vm.polls[vm.pollNum].$id].submission[vm.userID]}" class="card card-padding response-card">
             <p class="card-text">{{choice}}</p>
           </div>
         </div>
@@ -24,7 +25,7 @@
         <div class="col-sm-12">
           <ul class="chatbox-list">
             <li ng-click="vm.showDialog(msg)" class="card" ng-repeat="msg in vm.responses[vm.polls[vm.pollNum].$id] track by $index">
-              <p class="chat-message open-msg">{{msg}}</p>
+              <p class="chat-message open-msg">{{msg.$value}}</p>
             </li>
           </ul>
         </div>

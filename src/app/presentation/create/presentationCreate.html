@@ -73,6 +73,23 @@
           </div>
         </div>
 
+        <div class="row" ng-show="polls[$index].questionType == 'Multiple Choice'">
+          <div class="col-sm-12 col-md-8">
+            <div class="form-group">
+              <label>Allow Multiple Votes</label>
+              <input type="checkbox" ng-model="poll.singleChoice" />
+            </div>
+          </div>
+        </div>
+
+        <div class="row" ng-show="polls[$index].questionType == 'Open'">
+          <div class="col-sm-12 col-md-8">
+            <div class="form-group">
+              <label>Profanity Filter</label>
+              <input type="checkbox" ng-model="poll.profanityFilter" />
+            </div>
+          </div>
+        </div>
       </div>
 
       <span>

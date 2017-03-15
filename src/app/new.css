@@ -291,6 +291,10 @@ ul li a i {
   background-color: #CCCCCC !important;
 }
 
+.responded {
+  background-color: #CCCCCC !important;
+}
+
 @media(min-width:768px) {
     #wrapper {
         padding-left: 100px;
