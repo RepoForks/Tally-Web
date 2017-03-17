@@ -6,7 +6,7 @@
     .controller('RoomCreateController', RoomCreateController);
 
   /** @ngInject */
-  function RoomCreateController($scope, $state, $stateParams, firebaseService, $firebaseArray, authenticationService) {
+  function RoomCreateController($scope, $state, $stateParams, firebaseService, $firebaseArray, authenticationService, toastr) {
     var vm = this;
 
     $scope.creation = $stateParams.roomID === undefined;
@@ -78,8 +78,6 @@
 
         vm.createdRoom.studentList = handleStudentList();
 
-        console.log(vm.createdRoom);
-
         // pushes new entry to 'rooms' and returns the generated key
         vm.roomKey = firebaseService.getRoomRef().push(vm.createdRoom).key;
         vm.createdRoom.id = vm.roomKey;
@@ -90,6 +88,7 @@
           enrollUsersInRoom(vm.createdRoom);
         }
 
+        toastr.success("Module has been created.");
         $state.go('room.detail', {creator: vm.createdRoom.creator, roomName: vm.createdRoom.name, roomID: vm.createdRoom.id});
 
     }

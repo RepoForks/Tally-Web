@@ -53,7 +53,6 @@
 
           firebaseService.getPollResponsesRef().child('/' + poll.$id).child('/submission').on('value', function(child) {
             vm.submissions[poll.$id] = child.val();
-            console.log(vm.submissions);
           });
 
           //vm.responses[i] = $firebaseArray(firebaseService.getPollResponsesRef().child('/' + pollID));
@@ -103,15 +102,12 @@
     function submitSingleChoice(pollID, index) {
       var obj = {};
       var uid = authenticationService.getCurrentUser().uid;
-      console.log(uid);
       obj[uid] = index;
-      console.log(obj);
 
       firebaseService.getPollResponsesRef()
         .child('/' + pollID)
         .child('/submission')
         .child('/' + uid).on('value', function(snap) {
-          console.log(snap.val());
           if(snap.val() == null) {
             firebaseService.getPollResponsesRef()
               .child('/' + pollID)

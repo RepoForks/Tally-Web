@@ -5,11 +5,13 @@
     .module('tally')
     .controller('PresentationCreateController', PresentationCreateController);
 
-  function PresentationCreateController($scope, $state, $stateParams, firebaseService, $firebaseArray) {
+  function PresentationCreateController($scope, $state, $stateParams, firebaseService, $firebaseArray, authenticationService) {
     var vm = this;
 
     $scope.titleEdit = false;
     $scope.editMode = ($stateParams.editMode == 'true');
+
+    vm.creator = authenticationService.getCurrentUser().uid;
 
     var poll = {
       question: '',
@@ -39,7 +41,7 @@
     vm.chartTypes = ['Bar', 'Pie', 'Rank', 'Scales', 'Form'];
 
     vm.possbileTypes = {
-      'Multiple Choice': [vm.chartTypes[0], vm.chartTypes[1], vm.chartTypes[2], vm.chartTypes[3]],
+      'Multiple Choice': [vm.chartTypes[0], vm.chartTypes[1]],
       'Open': [vm.chartTypes[4]]
     };
 
@@ -82,6 +84,8 @@
         }
        //firebaseService.getPollResponsesRef('/' + pollKey).push();
       }
+
+      $state.go('presentation.poll', {roomName: $stateParams.roomName, roomID: $stateParams.roomID, presID: presKey, pollNum: 0});
     }
 
   }

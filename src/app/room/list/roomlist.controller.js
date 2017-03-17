@@ -6,7 +6,7 @@
     .controller('RoomListController', RoomListController);
 
   /** @ngInject */
-  function RoomListController($state, $stateParams, $window, $rootScope, firebaseService, $firebaseArray, authenticationService, $uibModal) {
+  function RoomListController($state, $stateParams, $window, $rootScope, firebaseService, $firebaseArray, authenticationService, $uibModal, toastr) {
     var vm = this;
 
     vm.userID = $stateParams.userID;
@@ -41,7 +41,6 @@
     }
 
     vm.showEnrolledDialog = function() {
-      console.log($uibModal);
       var modalInstance = $uibModal.open({
          animation: true,
          templateUrl: 'app/room/list/enrollDialog.html',
@@ -60,6 +59,7 @@
               var ref = firebaseService.getUserRoomRef().child(authenticationService.getCurrentUser().uid).child('/' + entry.key)
               ref.update(entry.val());
               ref.update({id: entry.key});
+              toastr.success("You have been enrolled upon the module.");
               return true;
             }
           }

@@ -5,7 +5,7 @@
     .module('tally')
     .controller('AuthController', AuthController);
 
-  function AuthController($state, $scope, authenticationService) {
+  function AuthController($state, $scope, authenticationService, toastr) {
     var vm = this;
 
     vm.type = $state.current.name;
@@ -41,9 +41,10 @@
     function handleAuthSubmission(val) {
       if(val.message == undefined) {
         // success: redirect
+        toastr.success("Welcome back.");
         $state.go('room.list', {userID: val.uid});
       } else {
-        console.log(val.message);
+        toastr.error(val.message);
       }
     }
 
